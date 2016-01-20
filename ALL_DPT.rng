@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- ALL_DPT.rng ==  pour les fichiers dpt_(13|19|75).xml 
+     GENEVIEVE BIENVENUE, ALEXANDRE CAVALCANTE, VIRGINIE POADEY
+     -->
+
+<!--Racine du document> qui est découpée en années -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  
+  <start>
+    <choice>
+      <ref name="data"/>
+    </choice>
+  </start>
+  
+  <define name="data">
+    <element name="data">
+      <oneOrMore>
+        <ref name="periode"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <!-- Une période contient des délits et des accidents -->
+  <define name="periode">
+    <element name="periode">
+      <ref name="attlist.periode"/>
+      <ref name="delits"/>
+      <ref name="accidents"/>
+    </element>
+  </define>
+  
+  <!-- @attr annee qui précise de quelle année il s'agit -->
+  <define name="attlist.periode" combine="interleave">
+    <attribute name="annee">
+      <data type="NMTOKEN"/>
+    </attribute>
+  </define>
+  
+  <!-- Les <delits> sont composés de plusieurs délits -->
+  <define name="delits">
+    <element name="delits">
+      <oneOrMore>
+        <ref name="delit"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <!-- Pour un <delit>, on a le nombre de ce délit par mois -->
+  <define name="delit">
+    <element name="delit">
+      <ref name="attlist.delit"/>
+      <ref name="mois"/>
+    </element>
+  </define>
+  
+  <!-- @attr code se réfère à un type de délit -->
+  <define name="attlist.delit" combine="interleave">
+    <attribute name="code">
+      <choice>
+        <value>2</value>
+        <value>27</value>
+        <value>35</value>
+        <value>36</value>
+        <value>57</value>
+        <value>82</value>
+      </choice>
+    </attribute>
+  </define> 
+
+  <!-- Les mois de l'année -->
+  <define name="mois">
+    <element name="mois">
+      <ref name="dec"/>
+      <ref name="nov"/>
+      <ref name="oct"/>
+      <ref name="sept"/>
+      <ref name="aout"/>
+      <ref name="juil"/>
+      <ref name="juin"/>
+      <ref name="mai"/>
+      <ref name="avril"/>
+      <ref name="mars"/>
+      <ref name="fev"/>
+      <ref name="janv"/>
+    </element>
+  </define>
+  
+  <!-- Janvier -->
+  <define name="janv">
+    <element name="janv">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Février -->
+  <define name="fev">
+    <element name="fev">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Mars -->
+  <define name="mars">
+    <element name="mars">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Avril -->
+  <define name="avril">
+    <element name="avril">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Mai -->
+  <define name="mai">
+    <element name="mai">
+      <text/>
+    </element>
+  </define>  
+  
+  <!-- Juin -->
+  <define name="juin">
+    <element name="juin">
+      <text/>
+    </element>
+  </define>
+
+  <!-- Juillet -->
+  <define name="juil">
+    <element name="juil">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Août -->
+  <define name="aout">
+    <element name="aout">
+      <text/>
+    </element>
+  </define> 
+  
+  <!-- Septembre -->
+  <define name="sept">
+    <element name="sept">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Octobre -->
+  <define name="oct">
+    <element name="oct">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Novembre -->
+  <define name="nov">
+    <element name="nov">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Décembre -->
+  <define name="dec">
+    <element name="dec">
+      <text/>
+    </element>
+  </define> 
+  
+  <!-- Les accidents de la route --> 
+  <define name="accidents">
+    <element name="accidents">
+      <oneOrMore>
+        <ref name="accident"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <!-- Un accident est composé des informations suivantes -->
+  <define name="accident">
+    <element name="accident">
+      <ref name="attlist.accident"/>
+      <ref name="date"/>
+      <ref name="heure"/>
+      <ref name="lumiere"/>
+      <ref name="conditionsAtmosferiques"/>
+      <ref name="colision"/>
+      <ref name="localisation"/>
+      <ref name="lieux"/>
+      <ref name="vehicules"/>
+      <ref name="usagers"/>
+    </element>
+  </define>
+  
+  <!-- @attr id qui réfère à un numéro unique d'accident -->
+  <define name="attlist.accident" combine="interleave">
+    <attribute name="id">
+      <data type="NMTOKEN"/>
+    </attribute>
+  </define>
+  
+  <!-- La date de l'accident -->
+  <define name="date">
+    <element name="date">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- L'heure de l'accident -->
+  <define name="heure">
+    <element name="heure">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- S'il faisait jour ou nuit -->
+  <define name="lumiere">
+    <element name="lumiere">
+      <text/>
+    </element>
+  </define> 
+  
+  <!-- Les conditions météos au moment de l'accident -->
+  <define name="conditionsAtmosferiques">
+    <element name="conditionsAtmosferiques">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Le type de collision -->
+  <define name="colision">
+    <element name="colision">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- La localisation exacte de l'accident -->
+  <define name="localisation">
+    <element name="localisation">
+      <ref name="adresse"/>
+      <ref name="latitude"/>
+      <ref name="longitude"/>
+    </element>
+  </define>
+  
+  <!-- Son adresse -->
+  <define name="adresse">
+    <element name="adresse">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Sa latitude -->
+  <define name="latitude">
+    <element name="latitude">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Sa longitude -->
+  <define name="longitude">
+    <element name="longitude">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Les lieux de l'accident -->
+  <define name="lieux">
+    <element name="lieux">
+      <ref name="categorie"/>
+      <ref name="surface"/>
+    </element>
+  </define>
+  
+  <!-- Quel type de route -->
+  <define name="categorie">
+    <element name="categorie">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- L'état de la route -->
+  <define name="surface">
+    <element name="surface">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Les véhicules impliqués dans l'accident -->
+  <define name="vehicules">
+    <element name="vehicules">
+      <oneOrMore>
+        <ref name="vehicule"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <!-- Le "comportement" du véhicule -->
+  <define name="vehicule">
+    <element name="vehicule">
+      <ref name="sens"/>
+      <ref name="catv"/>
+      <ref name="obstacleFixe"/>
+      <ref name="obstacleMobile"/>
+      <ref name="choc"/>
+      <ref name="manoeuvre"/>
+    </element>
+  </define>
+  
+  <!-- Quel sens de la route -->
+  <define name="sens">
+    <element name="sens">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- La catégorie du véhicule -->  
+  <define name="catv">
+    <element name="catv">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Si l'obstacle heurté était fixe -->
+  <define name="obstacleFixe">
+    <element name="obstacleFixe">
+      <text/>
+    </element>
+  </define>
+    
+  <!-- Si l'obstacle heurté était mobile -->
+  <define name="obstacleMobile">
+    <element name="obstacleMobile">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- L'endroit du choc sur le véhicule -->  
+  <define name="choc">
+    <element name="choc">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Type de manoeuvre effectué au moment de l'accident -->
+  <define name="manoeuvre">
+    <element name="manoeuvre">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Les usagers -->
+  <define name="usagers">
+    <element name="usagers">
+      <oneOrMore>
+        <ref name="usager"/>
+      </oneOrMore>
+    </element>
+  </define>
+ 
+  <!-- Les usagers victimes de l'accident -->
+  <define name="usager">
+    <element name="usager">
+      <ref name="catUsager"/>
+      <ref name="gravite"/>
+      <ref name="sexe"/>
+      <ref name="securite"/>
+      <ref name="anNaissanceUsager"/>
+    </element>
+  </define>
+  
+  <!-- Sa catégorie -->
+  <define name="catUsager">
+    <element name="catUsager">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- La gravité de l'état de l'usager -->
+  <define name="gravite">
+    <element name="gravite">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Le sexe -->
+  <define name="sexe">
+    <element name="sexe">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Les éléments de sécurité -->
+  <define name="securite">
+    <element name="securite">
+      <zeroOrMore>
+        <choice>
+          <ref name="existence"/>
+          <ref name="utilistion"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  
+  <!-- Si le dispositif était présent -->
+  <define name="existence">
+    <element name="existence">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- Si le dispositif était utilisé -->
+  <define name="utilistion">
+    <element name="utilistion">
+      <text/>
+    </element>
+  </define>
+  
+  <!-- L'année de naissance de l'usager -->
+  <define name="anNaissanceUsager">
+    <element name="anNaissanceUsager">
+      <text/>
+    </element>
+  </define>  
+</grammar>

@@ -1,0 +1,158 @@
+<!--  
+    ALL_DPT.dtd == DTD des fichiers dpt_x.xml
+    GENEVIEVE BIENVENUE, ALEXANDRE CAVALCANTE, VIRGINIE POADEY
+-->
+
+<!-- +==============================================+
+	 | Déclaration des éléments et attributs		|
+	 +==============================================+ -->
+
+<!--Racine du document> qui est découpée en années -->
+<!ELEMENT data ( periode+ )>
+
+<!-- Une période contient des délits et des accidents -->
+<!ELEMENT periode ( delits, accidents )>
+<!-- @attr annee qui précise de quelle année il s'agit -->
+<!ATTLIST periode annee NMTOKEN #REQUIRED>
+
+<!-- Les <delits> sont composés de plusieurs délits -->
+<!ELEMENT delits ( delit+ )>
+
+<!-- Pour un <delit>, on a le nombre de ce délit par mois -->
+<!ELEMENT delit ( mois ) >
+<!-- @attr code se réfère à un type de délit -->
+<!ATTLIST delit code ( 2 | 27 | 35 | 36 | 57 | 82 ) #REQUIRED>
+
+<!-- Les mois de l'année -->
+<!ELEMENT mois ( dec, nov, oct, sept, aout, juil, juin, mai, avril, mars, fev, janv )>
+
+<!-- Décembre -->
+<!ELEMENT dec ( #PCDATA )>
+
+<!-- Novembre -->
+<!ELEMENT nov ( #PCDATA )>
+
+<!-- Octobre -->
+<!ELEMENT oct ( #PCDATA )>
+
+<!-- Septembre -->
+<!ELEMENT sept ( #PCDATA )>
+
+<!-- Août -->
+<!ELEMENT aout ( #PCDATA )>
+
+<!-- Juillet -->
+<!ELEMENT juil ( #PCDATA )>
+
+<!-- Juin -->
+<!ELEMENT juin ( #PCDATA )>
+
+<!-- Mai -->
+<!ELEMENT mai ( #PCDATA )>
+
+<!-- Avril -->
+<!ELEMENT avril ( #PCDATA )>
+
+<!-- Mars -->
+<!ELEMENT mars ( #PCDATA )>
+
+<!-- Février -->
+<!ELEMENT fev ( #PCDATA )>
+
+<!-- Janvier -->
+<!ELEMENT janv ( #PCDATA )>
+
+<!-- Les accidents de la route -->
+<!ELEMENT accidents ( accident+ )>
+
+<!-- Un accident est composé des informations suivantes -->
+<!ELEMENT accident ( date, heure, lumiere, conditionsAtmosferiques, colision, localisation, lieux, vehicules, usagers )>
+<!-- @attr id qui réfère à un numéro unique d'accident -->
+<!ATTLIST accident id NMTOKEN #REQUIRED>
+
+<!-- La date de l'accident -->
+<!ELEMENT date ( #PCDATA )>
+
+<!-- L'heure de l'accident -->
+<!ELEMENT heure ( #PCDATA )>
+
+<!-- S'il faisait jour ou nuit -->
+<!ELEMENT lumiere ( #PCDATA )>
+
+<!-- Les conditions météos au moment de l'accident -->
+<!ELEMENT conditionsAtmosferiques ( #PCDATA )>
+
+<!-- Le type de collision -->
+<!ELEMENT colision ( #PCDATA )>
+
+<!-- La localisation exacte de l'accident -->
+<!ELEMENT localisation ( adresse, latitude, longitude )>
+
+<!-- Son adresse -->
+<!ELEMENT adresse ( #PCDATA )>
+
+<!-- Sa latitude -->
+<!ELEMENT latitude ( #PCDATA )>
+
+<!-- Sa longitude -->
+<!ELEMENT longitude ( #PCDATA )>
+
+<!-- Les lieux de l'accident -->
+<!ELEMENT lieux ( categorie, surface )>
+
+<!-- Quel type de route -->
+<!ELEMENT categorie ( #PCDATA )>
+
+<!-- L'état de la route -->
+<!ELEMENT surface ( #PCDATA )>
+
+<!-- Les véhicules impliqués dans l'accident -->
+<!ELEMENT vehicules ( vehicule+ )>
+
+<!-- Le "comportement" du véhicule -->
+<!ELEMENT vehicule ( sens, catv, obstacleFixe, obstacleMobile, choc, manoeuvre )>
+
+<!-- Quel sens de la route -->
+<!ELEMENT sens ( #PCDATA )>
+
+<!-- La catégorie du véhicule -->
+<!ELEMENT catv ( #PCDATA )>
+
+<!-- Si l'obstacle heurté était fixe -->
+<!ELEMENT obstacleFixe ( #PCDATA )>
+
+<!-- Si l'obstacle heurté était mobile -->
+<!ELEMENT obstacleMobile ( #PCDATA )>
+
+<!-- L'endroit du choc sur le véhicule -->
+<!ELEMENT choc ( #PCDATA )>
+
+<!-- Type de manoeuvre effectué au moment de l'accident -->
+<!ELEMENT manoeuvre ( #PCDATA )>
+
+<!-- Les usagers -->
+<!ELEMENT usagers ( usager+ )>
+
+<!-- Les usagers victimes de l'accident -->
+<!ELEMENT usager ( catUsager, gravite, sexe, securite, anNaissanceUsager )>
+
+<!-- Sa catégorie -->
+<!ELEMENT catUsager ( #PCDATA )>
+
+<!-- La gravité de l'état de l'usager -->
+<!ELEMENT gravite ( #PCDATA )>
+
+<!-- Le sexe -->
+<!ELEMENT sexe ( #PCDATA )>
+
+<!-- Les éléments de sécurité -->
+<!ELEMENT securite ( existence | utilistion )* >
+
+<!-- Si le dispositif était présent -->
+<!ELEMENT existence ( #PCDATA )>
+
+<!-- Si le dispositif était utilisé -->
+<!ELEMENT utilistion ( #PCDATA )>
+
+<!-- L'année de naissance de l'usager -->
+<!ELEMENT anNaissanceUsager ( #PCDATA )>
