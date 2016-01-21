@@ -16,13 +16,18 @@
 	</div>
 	<div class="ui raised very padded text container segment">
 		<h2 class="ui header">XSLT</h2>
-    <a class="ui tiny teal button" href="dpt.xsl" download>Le XSLT peut être téléchargé ici.</a>
-		<pre>
+    <a class="ui tiny teal button" href="resultats_13.html">Résultats Dpt_13</a>
+    <br/>
+    <br/>
+    <a class="ui tiny teal button" href="resultats_19.html">Résultats Dpt_19</a>
+    <br/>
+    <br/>
+    <a class="ui tiny teal button" href="dpt1.xsl" download>XSLT #1</a><br/>
+    <pre>
 
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+    xmlns="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
     &lt;xsl:output name="csv-out" method="text" encoding="UTF-8" media-type="text/csv"/&gt;
 
     &lt;xsl:output indent="yes" method="html" encoding="UTF-8"
@@ -35,23 +40,45 @@
         &lt;xsl:message&gt;D&eacute;but de la transformation&lt;/xsl:message&gt;
         &lt;html&gt;
             &lt;head&gt;
-                &lt;link rel="stylesheet" type="text/css" href="semantic.min.css" /&gt;
+                &lt;link rel="stylesheet" type="text/css" href="semantic.min.css"/&gt;
                 &lt;link rel="stylesheet" href="style.css" media="all" type="text/css"/&gt;
-                &lt;link rel="shortcut icon" href="images/favicon.ico" /&gt;
-                &lt;link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css"/&gt;
+                &lt;link rel="shortcut icon" href="images/favicon.ico"/&gt;
+                &lt;link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet"
+                    type="text/css"/&gt;
                 &lt;!-- cr&eacute;er le lien vers le css. html est cr&eacute;&eacute; &agrave; c&ocirc;t&eacute; du fichier ex&eacute;cutable. css aussi --&gt;
                 &lt;title&gt;XML&lt;/title&gt;
             &lt;/head&gt;
             &lt;body&gt;
                 &lt;div class="leaderboard" data-text="Leaderboard"&gt;
                     &lt;h1&gt;XML&lt;/h1&gt;
-                    &lt;h4&gt;Genevieve Bienvenue  &amp;  Alexandre Cavalcante  &amp;  Virginie Poadey&lt;/h4&gt;
+                    &lt;h4&gt;Genevieve Bienvenue &amp; Alexandre Cavalcante &amp; Virginie Poadey&lt;/h4&gt;
                 &lt;/div&gt;
                 &lt;div class="ui raised very padded text container segment"&gt;
+                    &lt;p&gt;Nombre total d'accidents : &lt;xsl:value-of select="count(//accident)"/&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;Nombre de personnes tu&eacute;es qui n'avaient pas leur dispositif de s&eacute;curit&eacute; :
+                            &lt;xsl:value-of
+                            select="count(//gravite[text() = ' Tu&eacute;' and following::securite/utilistion[text() = 'Non']])"
+                        /&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;Nombre de personnes tu&eacute;es qui &eacute;taient mineures : &lt;xsl:value-of
+                            select="count(//anNaissanceUsager[number(text()) &gt; 1998 and preceding-sibling::gravite[text() = ' Tu&eacute;']])"
+                        /&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt; Nombre d'hommes qui ont subi un accident en 2014 : &lt;xsl:value-of
+                            select="count(//accident[starts-with(@id, '2014')]/usagers/usager/sexe[text() = 'Masculin'])"
+                        /&gt;
+                    &lt;/p&gt;
+
+                    &lt;p&gt; Nombre de femmes qui ont subi un accident en 2014 : &lt;xsl:value-of
+                            select="count(//accident[starts-with(@id,'2014')]/usagers/usager/sexe[text() = 'F&eacute;min'])"
+                        /&gt;
+                    &lt;/p&gt;
                 &lt;/div&gt;
-                &lt;!--&lt;xsl:apply-templates/&gt;--&gt;
+            &lt;!-- &lt;xsl:apply-templates/&gt;--&gt;
             &lt;/body&gt;
         &lt;/html&gt;
+
 
         &lt;xsl:message&gt;&Eacute;criture de la CSS&lt;/xsl:message&gt;
         &lt;xsl:result-document href="style.css" format="css-out"&gt;
@@ -135,7 +162,8 @@ p {
 
         &lt;xsl:message&gt;&Eacute;criture de la CSV&lt;/xsl:message&gt;
         &lt;xsl:result-document href="map.csv" format="csv-out"&gt;
-            &lt;xsl:apply-templates select="/data/periode/accidents/accident/localisation" mode="out_csv"/&gt;
+            &lt;xsl:apply-templates select="/data/periode/accidents/accident/localisation"
+                mode="out_csv"/&gt;
         &lt;/xsl:result-document&gt;
     &lt;/xsl:template&gt;
 
@@ -151,10 +179,258 @@ p {
 &lt;/xsl:text&gt;
         &lt;/xsl:if&gt;
     &lt;/xsl:template&gt;
+    
+    &lt;xsl:template match="text()" mode="#all"/&gt;
 
 &lt;/xsl:stylesheet&gt;
 
-		</pre>
+
+    </pre>
+    <a class="ui tiny teal button" href="dpt2.xsl" download>XSLT #2</a>
+    <pre>
+
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    exclude-result-prefixes="xs" version="2.0"&gt;
+
+    &lt;!-- ALL_DPT.xsl == pour la transformation XSL pour les graphiques
+     GENEVIEVE BIENVENUE, ALEXANDRE CAVALCANTE, VIRGINIE POADEY
+     --&gt;
+
+    &lt;!-- Sortie CSV pour les graphiques --&gt;
+    &lt;xsl:output name="csv-out" indent="no" method="text" encoding="UTF-8" media-type="text/csv"/&gt;
+
+    &lt;!-- Debut de transformation --&gt;
+    &lt;xsl:template match="/"&gt;
+        &lt;xsl:value-of select="document-uri(.)"/&gt;
+        &lt;xsl:apply-templates/&gt;
+        &lt;xsl:result-document href="accidents-delits.csv" format="csv-out"&gt;
+            &lt;xsl:apply-templates mode="csv"/&gt;
+        &lt;/xsl:result-document&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Compte le nombre d'accidents par mois sur l'année 2014 --&gt;
+    &lt;xsl:template match="periode[@annee = '2014']" mode="csv"&gt;
+        &lt;xsl:variable name="dec" select="count(//accident[matches(date,'\d+/12/14')])"/&gt;
+        &lt;xsl:value-of select="$dec"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="nov" select="count(//accident[matches(date,'\d+/11/14')])"/&gt;
+        &lt;xsl:value-of select="$nov"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="oct" select="count(//accident[matches(date,'\d+/10/14')])"/&gt;
+        &lt;xsl:value-of select="$oct"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="sept" select="count(//accident[matches(date,'\d+/9/14')])"/&gt;
+        &lt;xsl:value-of select="$sept"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="aout" select="count(//accident[matches(date,'\d+/8/14')])"/&gt;
+        &lt;xsl:value-of select="$aout"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jul" select="count(//accident[matches(date,'\d+/7/14')])"/&gt;
+        &lt;xsl:value-of select="$jul"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jun" select="count(//accident[matches(date,'\d+/6/14')])"/&gt;
+        &lt;xsl:value-of select="$jun"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mai" select="count(//accident[matches(date,'\d+/5/14')])"/&gt;
+        &lt;xsl:value-of select="$mai"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="avr" select="count(//accident[matches(date,'\d+/4/14')])"/&gt;
+        &lt;xsl:value-of select="$avr"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mars" select="count(//accident[matches(date,'\d+/3/14')])"/&gt;
+        &lt;xsl:value-of select="$mars"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="fev" select="count(//accident[matches(date,'\d+/2/14')])"/&gt;
+        &lt;xsl:value-of select="$fev"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jan" select="count(//accident[matches(date, '\d+/1/14' )])"/&gt;
+        &lt;xsl:value-of select="$jan"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:apply-templates mode="csv"/&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Compte le nombre d'accidents par mois sur l'année 2013 --&gt;
+    &lt;xsl:template match="periode[@annee = '2013']" mode="csv"&gt;
+        &lt;xsl:variable name="dec" select="count(//accident[matches(date,'\d+/12/13')])"/&gt;
+        &lt;xsl:value-of select="$dec"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="nov" select="count(//accident[matches(date,'\d+/11/13')])"/&gt;
+        &lt;xsl:value-of select="$nov"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="oct" select="count(//accident[matches(date,'\d+/10/13')])"/&gt;
+        &lt;xsl:value-of select="$oct"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="sept" select="count(//accident[matches(date,'\d+/9/13')])"/&gt;
+        &lt;xsl:value-of select="$sept"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="aout" select="count(//accident[matches(date,'\d+/8/13')])"/&gt;
+        &lt;xsl:value-of select="$aout"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jul" select="count(//accident[matches(date,'\d+/7/13')])"/&gt;
+        &lt;xsl:value-of select="$jul"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jun" select="count(//accident[matches(date,'\d+/6/13')])"/&gt;
+        &lt;xsl:value-of select="$jun"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mai" select="count(//accident[matches(date,'\d+/5/13')])"/&gt;
+        &lt;xsl:value-of select="$mai"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="avr" select="count(//accident[matches(date,'\d+/4/13')])"/&gt;
+        &lt;xsl:value-of select="$avr"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mars" select="count(//accident[matches(date,'\d+/3/13')])"/&gt;
+        &lt;xsl:value-of select="$mars"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="fev" select="count(//accident[matches(date,'\d+/2/13')])"/&gt;
+        &lt;xsl:value-of select="$fev"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jan" select="count(//accident[matches(date, '\d+/1/13' )])"/&gt;
+        &lt;xsl:value-of select="$jan"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:apply-templates mode="csv"/&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Compte le nombre d'accidents par mois sur l'année 2012 --&gt;
+    &lt;xsl:template match="periode[@annee = '2012']" mode="csv"&gt;
+        &lt;xsl:variable name="dec" select="count(//accident[matches(date,'\d+/12/12')])"/&gt;
+        &lt;xsl:value-of select="$dec"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="nov" select="count(//accident[matches(date,'\d+/11/12')])"/&gt;
+        &lt;xsl:value-of select="$nov"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="oct" select="count(//accident[matches(date,'\d+/10/12')])"/&gt;
+        &lt;xsl:value-of select="$oct"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="sept" select="count(//accident[matches(date,'\d+/9/12')])"/&gt;
+        &lt;xsl:value-of select="$sept"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="aout" select="count(//accident[matches(date,'\d+/8/12')])"/&gt;
+        &lt;xsl:value-of select="$aout"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jul" select="count(//accident[matches(date,'\d+/7/12')])"/&gt;
+        &lt;xsl:value-of select="$jul"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jun" select="count(//accident[matches(date,'\d+/6/12')])"/&gt;
+        &lt;xsl:value-of select="$jun"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mai" select="count(//accident[matches(date,'\d+/5/12')])"/&gt;
+        &lt;xsl:value-of select="$mai"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="avr" select="count(//accident[matches(date,'\d+/4/12')])"/&gt;
+        &lt;xsl:value-of select="$avr"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mars" select="count(//accident[matches(date,'\d+/3/12')])"/&gt;
+        &lt;xsl:value-of select="$mars"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="fev" select="count(//accident[matches(date,'\d+/2/12')])"/&gt;
+        &lt;xsl:value-of select="$fev"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jan" select="count(//accident[matches(date, '\d+/1/12' )])"/&gt;
+        &lt;xsl:value-of select="$jan"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:apply-templates mode="csv"/&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Compte le nombre d'accidents par mois sur l'année 2011 --&gt;
+    &lt;xsl:template match="periode[@annee = '2011']" mode="csv"&gt;
+        &lt;xsl:variable name="dec" select="count(//accident[matches(date,'\d+/12/11')])"/&gt;
+        &lt;xsl:value-of select="$dec"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="nov" select="count(//accident[matches(date,'\d+/11/11')])"/&gt;
+        &lt;xsl:value-of select="$nov"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="oct" select="count(//accident[matches(date,'\d+/10/11')])"/&gt;
+        &lt;xsl:value-of select="$oct"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="sept" select="count(//accident[matches(date,'\d+/9/11')])"/&gt;
+        &lt;xsl:value-of select="$sept"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="aout" select="count(//accident[matches(date,'\d+/8/11')])"/&gt;
+        &lt;xsl:value-of select="$aout"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jul" select="count(//accident[matches(date,'\d+/7/11')])"/&gt;
+        &lt;xsl:value-of select="$jul"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jun" select="count(//accident[matches(date,'\d+/6/11')])"/&gt;
+        &lt;xsl:value-of select="$jun"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mai" select="count(//accident[matches(date,'\d+/5/11')])"/&gt;
+        &lt;xsl:value-of select="$mai"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="avr" select="count(//accident[matches(date,'\d+/4/11')])"/&gt;
+        &lt;xsl:value-of select="$avr"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mars" select="count(//accident[matches(date,'\d+/3/11')])"/&gt;
+        &lt;xsl:value-of select="$mars"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="fev" select="count(//accident[matches(date,'\d+/2/11')])"/&gt;
+        &lt;xsl:value-of select="$fev"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jan" select="count(//accident[matches(date, '\d+/1/11' )])"/&gt;
+        &lt;xsl:value-of select="$jan"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:apply-templates mode="csv"/&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Compte le nombre d'accidents par mois sur l'année 2010 --&gt;
+    &lt;xsl:template match="periode[@annee = '2010']" mode="csv"&gt;
+        &lt;xsl:variable name="dec" select="count(//accident[matches(date,'\d+/12/10')])"/&gt;
+        &lt;xsl:value-of select="$dec"/&gt;
+        &lt;xsl:text/&gt;
+        &lt;xsl:variable name="nov" select="count(//accident[matches(date,'\d+/11/10')])"/&gt;
+        &lt;xsl:value-of select="$nov"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="oct" select="count(//accident[matches(date,'\d+/10/10')])"/&gt;
+        &lt;xsl:value-of select="$oct"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="sept" select="count(//accident[matches(date,'\d+/9/10')])"/&gt;
+        &lt;xsl:value-of select="$sept"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="aout" select="count(//accident[matches(date,'\d+/8/10')])"/&gt;
+        &lt;xsl:value-of select="$aout"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jul" select="count(//accident[matches(date,'\d+/7/10')])"/&gt;
+        &lt;xsl:value-of select="$jul"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jun" select="count(//accident[matches(date,'\d+/6/10')])"/&gt;
+        &lt;xsl:value-of select="$jun"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mai" select="count(//accident[matches(date,'\d+/5/10')])"/&gt;
+        &lt;xsl:value-of select="$mai"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="avr" select="count(//accident[matches(date,'\d+/4/10')])"/&gt;
+        &lt;xsl:value-of select="$avr"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="mars" select="count(//accident[matches(date,'\d+/3/10')])"/&gt;
+        &lt;xsl:value-of select="$mars"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="fev" select="count(//accident[matches(date,'\d+/2/10')])"/&gt;
+        &lt;xsl:value-of select="$fev"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:variable name="jan" select="count(//accident[matches(date, '\d+/1/10' )])"/&gt;
+        &lt;xsl:value-of select="$jan"/&gt;
+        &lt;xsl:text&gt;;&lt;/xsl:text&gt;
+        &lt;xsl:apply-templates mode="csv"/&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Pour afficher les délits du code 35 (vols de voiture) par mois et par année--&gt;
+    &lt;xsl:template match="data" mode="csv"&gt;
+        &lt;xsl:variable name="delits"
+            select="//periode[@annee]/delits/delit[@code = '35']/mois/child::node()"/&gt;
+        &lt;xsl:value-of select="$delits"/&gt;
+        &lt;xsl:text/&gt;
+        &lt;xsl:apply-templates mode="csv"/&gt;
+    &lt;/xsl:template&gt;
+
+    &lt;!-- Court-circuit pour les noeuds texte du doc xml --&gt;
+    &lt;xsl:template match="text()" mode="csv"/&gt;
+
+&lt;/xsl:stylesheet&gt;
+
+
+    </pre>
 	</div>
 </body>
 

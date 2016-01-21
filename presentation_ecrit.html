@@ -54,7 +54,7 @@
 		<p>
 			<b>Normalisation des fichiers des fait constatés</b><br/>
 			Pour que les données de fait constatés soit utilisables nous avons procédé une série de normalisations en deux étapes.<br/>
-			Dans la première étape, nous avons éliminé les colonnes du fichier Excel que ne seraient pas utiles pour notre travail. Pour chaque département français, le fichier xsl contenait les informations de délits commis pendant la période de janvier/1996 jusqu'à novembre/2015. L'élimination de colonnes contenant les informations avant janvier/2010 et après décembre/2015 avait pour objectif la réduction de données à traiter lors de la création du fichier XML. Après avoir supprimé les colonnes excédantes, nous avons enregistré chaque ongle fichier XSL comme un fichier CSV. La consolidation de ces fichiers CSV en fichier XML a été réalisée par un script python que nous avons développé.
+			Dans la première étape, nous avons éliminé les colonnes du fichier Excel que ne seraient pas utiles pour notre travail. Pour chaque département français, le fichier xsl contenait les informations de délits commis pendant la période de janvier/1996 jusqu'à novembre/2015. L'élimination de colonnes contenant les informations avant janvier/2010 et après décembre/2015 avait pour objectif la réduction de données à traiter lors de la création du fichier XML. Après avoir supprimé les colonnes excédantes, nous avons enregistré chaque ongle fichier XSL comme un fichier CSV. La consolidation de ces fichiers CSV en fichier XML a été réalisée par un script <a href="python_xml.zip" download>python</a> que nous avons développé.
 		</p>
 		<p>
 			<b>Description des sorties produites et des outils utilisés</b><br/>
@@ -64,17 +64,16 @@
 		</p>
 		<p>
 			<b>Analyse des résultats</b><br/>
+			Nos résultats peuvent être regardé dans des different cartes et graphes. On les visuialize avec Google Maps et Excel. Les résultats peuvent être trouvé en cliquant le boutton ci-dessus :<br/>
 			<a class="ui tiny teal button" href="rep_graphique.html">Résultats</a>
 		</p>
 		<p>
 			<b>Problématique rencontrées lors de la modélisation XSLT</b><br/>
-
 			Trouver de bonnes requêtes à exploiter.
 		</p>
 		<p>
 			<b>Difficultés éventuelles lors de l'écriture du programme XSLT</b><br/>
-
-			La syntaxe n'est pas évidente. On a eu du mal à incrémenter des variables pour compter les hommes/femmes dans la totalité du fichier, sans qu'il y ait de redondance
+			La syntaxe n'est pas évidente. On a eu du mal à incrémenter des variables pour compter les hommes/femmes dans la totalité du fichier, sans qu'il y ait de redondance.
 		</p>
 	</div>
 </body>
