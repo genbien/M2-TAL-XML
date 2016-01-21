@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="dpt.xsl"?>
 <!DOCTYPE data SYSTEM "ALL_DPT.dtd">
 <!--PROJET XML M2 ==>  XML PIVOT DELITS + ACCIDENTS 
         GENEVIEVE BIENVENUE, ALEXANDRE CAVALCANTE, VIRGINIE POADEY
@@ -36,7 +35,7 @@
           <avril>16</avril>
           <mars>14</mars>
           <fev>14</fev>
-          <janv>59</janv>
+          <janv>59</janv>          
         </mois>
       </delit>
       <delit code="35">
@@ -14434,82 +14433,82 @@
       </delit>
       <delit code="27">
         <mois>
-          <dec>33</dec>
-          <nov>44</nov>
-          <oct>35</oct>
-          <sept>33</sept>
-          <aout>36</aout>
-          <juil>8</juil>
-          <juin>25</juin>
-          <mai>27</mai>
-          <avril>16</avril>
-          <mars>14</mars>
-          <fev>14</fev>
-          <janv>59</janv>
+          <dec>58</dec>
+          <nov>35</nov>
+          <oct>19</oct>
+          <sept>20</sept>
+          <aout>23</aout>
+          <juil>19</juil>
+          <juin>40</juin>
+          <mai>24</mai>
+          <avril>19</avril>
+          <mars>40</mars>
+          <fev>42</fev>
+          <janv>15</janv>
         </mois>
       </delit>
       <delit code="35">
         <mois>
-          <dec>4</dec>
-          <nov>8</nov>
-          <oct>10</oct>
-          <sept>11</sept>
-          <aout>15</aout>
-          <juil>9</juil>
-          <juin>15</juin>
-          <mai>10</mai>
-          <avril>4</avril>
-          <mars>8</mars>
-          <fev>9</fev>
-          <janv>8</janv>
+          <dec>7</dec>
+          <nov>10</nov>
+          <oct>8</oct>
+          <sept>6</sept>
+          <aout>13</aout>
+          <juil>11</juil>
+          <juin>14</juin>
+          <mai>9</mai>
+          <avril>12</avril>
+          <mars>9</mars>
+          <fev>14</fev>
+          <janv>7</janv>          
         </mois>
       </delit>
       <delit code="36">
         <mois>
-          <dec>19</dec>
-          <nov>12</nov>
-          <oct>14</oct>
-          <sept>11</sept>
-          <aout>11</aout>
-          <juil>12</juil>
-          <juin>11</juin>
-          <mai>15</mai>
-          <avril>11</avril>
-          <mars>14</mars>
-          <fev>7</fev>
-          <janv>13</janv>
+          <dec>10</dec>
+          <nov>8</nov>
+          <oct>10</oct>
+          <sept>18</sept>
+          <aout>15</aout>
+          <juil>17</juil>
+          <juin>6</juin>
+          <mai>12</mai>
+          <avril>12</avril>
+          <mars>6</mars>
+          <fev>10</fev>
+          <janv>5</janv>          
         </mois>
       </delit>
       <delit code="57">
         <mois>
-          <dec>38</dec>
-          <nov>32</nov>
-          <oct>21</oct>
-          <sept>23</sept>
-          <aout>32</aout>
-          <juil>44</juil>
+          <dec>28</dec>
+          <nov>28</nov>
+          <oct>37</oct>
+          <sept>28</sept>
+          <aout>31</aout>
+          <juil>31</juil>
           <juin>21</juin>
-          <mai>26</mai>
-          <avril>33</avril>
-          <mars>52</mars>
-          <fev>21</fev>
-          <janv>72</janv>
+          <mai>30</mai>
+          <avril>17</avril>
+          <mars>17</mars>
+          <fev>25</fev>
+          <janv>10</janv>          
         </mois>
       </delit>
       <delit code="82">
         <mois>
           <dec>0</dec>
-          <nov>0</nov>
+          <nov>1</nov>
           <oct>0</oct>
-          <sept>1</sept>
-          <aout>0</aout>
-          <juil>1</juil>
-          <juin>1</juin>
-          <mai>0</mai>
-          <avril>0</avril>
-          <mars>1</mars>
+          <sept>3</sept>
+          <aout>1</aout>
+          <juil>2</juil>
+          <juin>0</juin>
+          <mai>1</mai>
+          <avril>1</avril>
+          <mars>2</mars>
           <fev>0</fev>
-          <janv>1</janv>
+          <janv>0</janv>          
         </mois>
       </delit>
     </delits>
@@ -27197,82 +27196,82 @@
       </delit>
       <delit code="27">
         <mois>
-          <dec>33</dec>
-          <nov>44</nov>
-          <oct>35</oct>
-          <sept>33</sept>
-          <aout>36</aout>
-          <juil>8</juil>
-          <juin>25</juin>
-          <mai>27</mai>
-          <avril>16</avril>
-          <mars>14</mars>
-          <fev>14</fev>
-          <janv>59</janv>
+          <dec>39</dec>
+          <nov>42</nov>
+          <oct>22</oct>
+          <sept>24</sept>
+          <aout>12</aout>
+          <juil>27</juil>
+          <juin>26</juin>
+          <mai>31</mai>
+          <avril>27</avril>
+          <mars>21</mars>
+          <fev>5</fev>
+          <janv>18</janv>          
         </mois>
       </delit>
       <delit code="35">
         <mois>
-          <dec>4</dec>
-          <nov>8</nov>
-          <oct>10</oct>
-          <sept>11</sept>
-          <aout>15</aout>
-          <juil>9</juil>
-          <juin>15</juin>
-          <mai>10</mai>
-          <avril>4</avril>
-          <mars>8</mars>
+          <dec>11</dec>
+          <nov>7</nov>
+          <oct>14</oct>
+          <sept>9</sept>
+          <aout>14</aout>
+          <juil>12</juil>
+          <juin>8</juin>
+          <mai>12</mai>
+          <avril>14</avril>
+          <mars>13</mars>
           <fev>9</fev>
-          <janv>8</janv>
+          <janv>6</janv>
         </mois>
       </delit>
       <delit code="36">
         <mois>
-          <dec>19</dec>
-          <nov>12</nov>
-          <oct>14</oct>
-          <sept>11</sept>
-          <aout>11</aout>
-          <juil>12</juil>
-          <juin>11</juin>
-          <mai>15</mai>
-          <avril>11</avril>
-          <mars>14</mars>
-          <fev>7</fev>
-          <janv>13</janv>
+          <dec>9</dec>
+          <nov>10</nov>
+          <oct>13</oct>
+          <sept>9</sept>
+          <aout>12</aout>
+          <juil>6</juil>
+          <juin>3</juin>
+          <mai>10</mai>
+          <avril>7</avril>
+          <mars>10</mars>
+          <fev>6</fev>
+          <janv>6</janv>
         </mois>
       </delit>
       <delit code="57">
         <mois>
-          <dec>38</dec>
-          <nov>32</nov>
-          <oct>21</oct>
-          <sept>23</sept>
-          <aout>32</aout>
-          <juil>44</juil>
-          <juin>21</juin>
-          <mai>26</mai>
-          <avril>33</avril>
-          <mars>52</mars>
-          <fev>21</fev>
-          <janv>72</janv>
+          <dec>34</dec>
+          <nov>50</nov>
+          <oct>28</oct>
+          <sept>29</sept>
+          <aout>31</aout>
+          <juil>16</juil>
+          <juin>26</juin>
+          <mai>17</mai>
+          <avril>18</avril>
+          <mars>19</mars>
+          <fev>23</fev>
+          <janv>25</janv>          
         </mois>
       </delit>
       <delit code="82">
         <mois>
-          <dec>0</dec>
+          <dec>3</dec>
           <nov>0</nov>
           <oct>0</oct>
-          <sept>1</sept>
+          <sept>0</sept>
           <aout>0</aout>
-          <juil>1</juil>
+          <juil>0</juil>
           <juin>1</juin>
           <mai>0</mai>
-          <avril>0</avril>
-          <mars>1</mars>
+          <avril>2</avril>
+          <mars>0</mars>
           <fev>0</fev>
-          <janv>1</janv>
+          <janv>0</janv>          
         </mois>
       </delit>
     </delits>
@@ -39331,80 +39330,80 @@
       </delit>
       <delit code="27">
         <mois>
-          <dec>33</dec>
-          <nov>44</nov>
-          <oct>35</oct>
-          <sept>33</sept>
-          <aout>36</aout>
-          <juil>8</juil>
-          <juin>25</juin>
-          <mai>27</mai>
-          <avril>16</avril>
-          <mars>14</mars>
-          <fev>14</fev>
-          <janv>59</janv>
+          <dec>25</dec>
+          <nov>29</nov>
+          <oct>30</oct>
+          <sept>28</sept>
+          <aout>16</aout>
+          <juil>26</juil>
+          <juin>22</juin>
+          <mai>22</mai>
+          <avril>9</avril>
+          <mars>34</mars>
+          <fev>27</fev>
+          <janv>19</janv>
         </mois>
       </delit>
       <delit code="35">
         <mois>
           <dec>4</dec>
-          <nov>8</nov>
+          <nov>13</nov>
           <oct>10</oct>
-          <sept>11</sept>
+          <sept>12</sept>
           <aout>15</aout>
-          <juil>9</juil>
-          <juin>15</juin>
-          <mai>10</mai>
-          <avril>4</avril>
-          <mars>8</mars>
-          <fev>9</fev>
-          <janv>8</janv>
+          <juil>14</juil>
+          <juin>4</juin>
+          <mai>11</mai>
+          <avril>6</avril>
+          <mars>16</mars>
+          <fev>6</fev>
+          <janv>6</janv>
         </mois>
       </delit>
       <delit code="36">
         <mois>
-          <dec>19</dec>
-          <nov>12</nov>
-          <oct>14</oct>
-          <sept>11</sept>
-          <aout>11</aout>
-          <juil>12</juil>
-          <juin>11</juin>
+          <dec>9</dec>
+          <nov>8</nov>
+          <oct>10</oct>
+          <sept>9</sept>
+          <aout>13</aout>
+          <juil>15</juil>
+          <juin>13</juin>
           <mai>15</mai>
-          <avril>11</avril>
-          <mars>14</mars>
-          <fev>7</fev>
-          <janv>13</janv>
+          <avril>14</avril>
+          <mars>20</mars>
+          <fev>10</fev>
+          <janv>9</janv>
         </mois>
       </delit>
       <delit code="57">
         <mois>
-          <dec>38</dec>
-          <nov>32</nov>
-          <oct>21</oct>
-          <sept>23</sept>
-          <aout>32</aout>
-          <juil>44</juil>
-          <juin>21</juin>
-          <mai>26</mai>
-          <avril>33</avril>
-          <mars>52</mars>
-          <fev>21</fev>
-          <janv>72</janv>
+          <dec>33</dec>
+          <nov>14</nov>
+          <oct>40</oct>
+          <sept>28</sept>
+          <aout>53</aout>
+          <juil>16</juil>
+          <juin>26</juin>
+          <mai>46</mai>
+          <avril>43</avril>
+          <mars>32</mars>
+          <fev>61</fev>
+          <janv>22</janv>
         </mois>
       </delit>
       <delit code="82">
         <mois>
-          <dec>0</dec>
-          <nov>0</nov>
+          <dec>1</dec>
+          <nov>1</nov>
           <oct>0</oct>
-          <sept>1</sept>
+          <sept>0</sept>
           <aout>0</aout>
-          <juil>1</juil>
+          <juil>2</juil>
           <juin>1</juin>
-          <mai>0</mai>
+          <mai>2</mai>
           <avril>0</avril>
-          <mars>1</mars>
+          <mars>0</mars>
           <fev>0</fev>
           <janv>1</janv>
         </mois>
@@ -53355,82 +53354,82 @@
       </delit>
       <delit code="27">
         <mois>
-          <dec>33</dec>
-          <nov>44</nov>
-          <oct>35</oct>
-          <sept>33</sept>
-          <aout>36</aout>
-          <juil>8</juil>
-          <juin>25</juin>
-          <mai>27</mai>
-          <avril>16</avril>
-          <mars>14</mars>
-          <fev>14</fev>
-          <janv>59</janv>
+          <dec>19</dec>
+          <nov>29</nov>
+          <oct>30</oct>
+          <sept>40</sept>
+          <aout>18</aout>
+          <juil>26</juil>
+          <juin>12</juin>
+          <mai>19</mai>
+          <avril>14</avril>
+          <mars>28</mars>
+          <fev>11</fev>
+          <janv>25</janv>
         </mois>
       </delit>
       <delit code="35">
         <mois>
-          <dec>4</dec>
-          <nov>8</nov>
-          <oct>10</oct>
+          <dec>17</dec>
+          <nov>16</nov>
+          <oct>8</oct>
           <sept>11</sept>
-          <aout>15</aout>
-          <juil>9</juil>
-          <juin>15</juin>
-          <mai>10</mai>
-          <avril>4</avril>
-          <mars>8</mars>
-          <fev>9</fev>
-          <janv>8</janv>
+          <aout>16</aout>
+          <juil>11</juil>
+          <juin>10</juin>
+          <mai>11</mai>
+          <avril>11</avril>
+          <mars>9</mars>
+          <fev>27</fev>
+          <janv>12</janv>
         </mois>
       </delit>
       <delit code="36">
         <mois>
-          <dec>19</dec>
-          <nov>12</nov>
+          <dec>8</dec>
+          <nov>6</nov>
           <oct>14</oct>
-          <sept>11</sept>
-          <aout>11</aout>
-          <juil>12</juil>
-          <juin>11</juin>
-          <mai>15</mai>
-          <avril>11</avril>
-          <mars>14</mars>
-          <fev>7</fev>
-          <janv>13</janv>
+          <sept>12</sept>
+          <aout>13</aout>
+          <juil>20</juil>
+          <juin>13</juin>
+          <mai>19</mai>
+          <avril>14</avril>
+          <mars>8</mars>
+          <fev>13</fev>
+          <janv>5</janv>
         </mois>
       </delit>
       <delit code="57">
         <mois>
-          <dec>38</dec>
-          <nov>32</nov>
-          <oct>21</oct>
-          <sept>23</sept>
-          <aout>32</aout>
-          <juil>44</juil>
-          <juin>21</juin>
-          <mai>26</mai>
-          <avril>33</avril>
-          <mars>52</mars>
-          <fev>21</fev>
-          <janv>72</janv>
+          <dec>26</dec>
+          <nov>28</nov>
+          <oct>31</oct>
+          <sept>14</sept>
+          <aout>38</aout>
+          <juil>22</juil>
+          <juin>15</juin>
+          <mai>28</mai>
+          <avril>34</avril>
+          <mars>44</mars>
+          <fev>33</fev>
+          <janv>25</janv>
         </mois>
       </delit>
       <delit code="82">
         <mois>
-          <dec>0</dec>
+          <dec>1</dec>
           <nov>0</nov>
-          <oct>0</oct>
-          <sept>1</sept>
-          <aout>0</aout>
-          <juil>1</juil>
+          <oct>1</oct>
+          <sept>0</sept>
+          <aout>1</aout>
+          <juil>0</juil>
           <juin>1</juin>
           <mai>0</mai>
           <avril>0</avril>
-          <mars>1</mars>
-          <fev>0</fev>
-          <janv>1</janv>
+          <mars>2</mars>
+          <fev>1</fev>
+          <janv>0</janv>
         </mois>
       </delit>
     </delits>
