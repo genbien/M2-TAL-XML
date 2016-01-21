@@ -16,6 +16,7 @@
 	</div>
 	<div class="ui raised very padded text container segment">
 		<h2 class="ui header">XSLT</h2>
+    <a class="ui tiny teal button" href="dpt.xsl" download>Le XSLT peut être téléchargé ici.</a>
 		<pre>
 
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -23,13 +24,13 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
     &lt;xsl:output name="csv-out" method="text" encoding="UTF-8" media-type="text/csv"/&gt;
-    
+
     &lt;xsl:output indent="yes" method="html" encoding="UTF-8"
         doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
         doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/&gt;
-    
+
     &lt;xsl:output name="css-out" indent="no" method="text" encoding="UTF-8" media-type="text/css"/&gt;
-    
+
     &lt;xsl:template match="/"&gt;
         &lt;xsl:message&gt;D&eacute;but de la transformation&lt;/xsl:message&gt;
         &lt;html&gt;
@@ -51,11 +52,11 @@
                 &lt;!--&lt;xsl:apply-templates/&gt;--&gt;
             &lt;/body&gt;
         &lt;/html&gt;
-        
+
         &lt;xsl:message&gt;&Eacute;criture de la CSS&lt;/xsl:message&gt;
         &lt;xsl:result-document href="style.css" format="css-out"&gt;
             &lt;!--se trouvera pas ds sortie principale. href : enregistrer. chemin relatif/absolu --&gt;
-            &lt;!-- format fait r&eacute;f&eacute;rence &agrave; name de xsl:output --&gt;          
+            &lt;!-- format fait r&eacute;f&eacute;rence &agrave; name de xsl:output --&gt;
             &lt;xsl:text&gt;html, body {
     height: 100%;
     width: 100%;
@@ -131,13 +132,13 @@ p {
 }
             &lt;/xsl:text&gt;
         &lt;/xsl:result-document&gt;
-        
+
         &lt;xsl:message&gt;&Eacute;criture de la CSV&lt;/xsl:message&gt;
         &lt;xsl:result-document href="map.csv" format="csv-out"&gt;
             &lt;xsl:apply-templates select="/data/periode/accidents/accident/localisation" mode="out_csv"/&gt;
         &lt;/xsl:result-document&gt;
     &lt;/xsl:template&gt;
-    
+
     &lt;!-- affiche latitude,longitude pour une sortie csv qui marche pour google maps --&gt;
     &lt;xsl:template match="localisation" mode="out_csv"&gt;
         &lt;xsl:if test="number(latitude) &gt; 0"&gt;
@@ -150,11 +151,10 @@ p {
 &lt;/xsl:text&gt;
         &lt;/xsl:if&gt;
     &lt;/xsl:template&gt;
-    
+
 &lt;/xsl:stylesheet&gt;
 
 		</pre>
-		<a class="ui teal button" href="dpt.xsl" download>Le XSLT peut être téléchargé ici.</a>
 	</div>
 </body>
 
