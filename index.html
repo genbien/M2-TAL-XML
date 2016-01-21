@@ -25,22 +25,19 @@
 					</i>
 				</div>
 				<div class="content">
-					<span class="ui large header">Presentation Écrit</span>
+					<span class="ui large header">Présentation Écrite</span>
 					<div class="meta">
-						<span>Qu'est ce qu'on fait ?</span>
+						<span>Déroulement du projet</span>
 					</div>
 					<div class="description">
 						<p>
-							Ici on present nos choix, méthodes, et problèmes de réalisation du projet.
+							Ici on presente nos choix, méthodes, et problèmes de réalisation du projet.
 						</p>
 					</div>
 					<div class="extra">
 						<div class="ui tiny teal label">Choix</div>
 						<div class="ui tiny teal label">Méthodes</div>
 						<div class="ui tiny teal label">Problèmes</div>
-						<!-- <div class="ui tiny teal label">
-							<i class="globe icon"></i>We're multilingual!
-						</div> -->
 						<a href="presentation_ecrit.html" class="ui right floated inverted teal small button">Presentation du projet
 							<i class="right chevron icon"></i>
 						</a>
@@ -57,11 +54,11 @@
 				<div class="content">
 					<span class="ui large header">Sources</span>
 					<div class="meta">
-						<span>D'où on a trouvé nos données</span>
+						<span>Sources des données</span>
 					</div>
 					<div class="description">
 						<p>
-							Nos données viennent du site www.data.gouv.fr. On a deux different jeux de données qu'on a choisi de mettre ensemble.
+							Nos données viennent du site www.data.gouv.fr. On a choisi deux different sets de données: Le premier, "<i>Base de données accidents corporels de la circulation</i>", au format CSV et le deuxième, "<i>Chiffres départementaux mensuels relatifs aux crimes et délits enregistrés par les services de police et de gendarmerie depuis janvier 1996</i>", au format XLSX.
 						</p>
 					</div>
 					<div class="extra">
@@ -93,14 +90,17 @@
 					</div>
 					<div class="description">
 						<p>
-							On a pris deux fichiers en format CSV et on les a combiné et transformé dans un seul fichier en format XML. Comme on a decidé de faire les analyses sur trois departements, on a créé trois fichiers (un pour chaque departement) avec cette information combiné pour facilité les traitements.
+							Ici, nous avons tenté de combiner les deux datasets en un seul. Afin de dimiuer la somme de données et de faciliter les traitements, il à été décidé de diviser le resultats par départements. Les datasets pour chaque département ont donc été combinées dans un fichier xml par département. Les fichiers peuvent être téléchargés en cliquant les bouttons ci-dessus.
 						</p>
 					</div>
 					<div class="extra">
 						<div class="ui tiny teal label">XML</div>
-						<div class="ui right floated inverted teal small button">XML
+						<a href="dpt_19.xml" class="ui right floated inverted teal small button" download>Dpt 19
 							<i class="right chevron icon"></i>
-						</div>
+						</a>
+						<a href="dpt_13.xml" class="ui right floated inverted teal small button" download>Dpt 13
+							<i class="right chevron icon"></i>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -118,18 +118,19 @@
 					</div>
 					<div class="description">
 						<p>
-							On fait une définition de notre document XML en format DTD et format RelaxNG.
+							Dans cette étape nous avons écris les definitions du xml de nos résultats au format DTD et RelaxNG.
+							Ces fichiers permettens de valider de facon formelle nos résultats.
 						</p>
 					</div>
 					<div class="extra">
 						<div class="ui tiny teal label">DTD</div>
 						<div class="ui tiny teal label">RelaxNG</div>
-						<div class="ui right floated inverted teal small button">RelaxNG
+						<a href="relaxng.html" class="ui right floated inverted teal small button">RelaxNG
 							<i class="right chevron icon"></i>
-						</div>
-						<div class="ui right floated inverted teal small button">DTD
+						</a>
+						<a href="dtd.html" class="ui right floated inverted teal small button">DTD
 							<i class="right chevron icon"></i>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -147,7 +148,8 @@
 					</div>
 					<div class="description">
 						<p>
-							On formes des nouveau fichiers à partir des fichiers en forme sml avec les fichiers xs
+							Cette étape à consisté à écrire des logique transformations au format XSLT afin d'exporter nos resultats dans des formats autres que XML.
+							Le processeur XSLT prend ce fichier de conversion, un fichier XML de resultats à transformer et créee des fichiers au format CSV, HTML et CSS nécéssaires pour la suite de notre étude.
 						</p>
 					</div>
 					<div class="extra">
@@ -172,7 +174,8 @@
 					</div>
 					<div class="description">
 						<p>
-							On represent les sorties de nos fichiers xslt dans des differents formes de representations graphiques.
+							Enfin, nous avons tentés d'obtenir une représentation visuelle de nos résultats.
+							Pour ce faire, nous avons utilisé les resultats convertits via XSLT de l'étape précédente afin d'obtenir un format compatible et pour profiter d'outils déjà existants, (ex: carte avec Google Maps).
 						</p>
 					</div>
 					<div class="extra">

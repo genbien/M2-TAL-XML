@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>XML</title>
+	<link rel="stylesheet" type="text/css" href="semantic.min.css" />
+	<link rel="stylesheet" type="text/css" href="my_css.css" />
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+	<div class="leaderboard" data-text="Leaderboard">
+		<h1>XML</h1>
+		<h4>Genevieve Bienvenue  &amp;  Alexandre Cavalcante  &amp;  Virginie Poadey</h4>
+	</div>
+	<div class="ui raised very padded text container segment">
+		<h2 class="ui header">DTD</h2>
+		<pre>
+&lt;!--  
+    ALL_DPT.dtd == DTD des fichiers dpt_x.xml
+    GENEVIEVE BIENVENUE, ALEXANDRE CAVALCANTE, VIRGINIE POADEY
+--&gt;
+
+&lt;!-- +==============================================+
+     | D&eacute;claration des &eacute;l&eacute;ments et attributs        |
+     +==============================================+ --&gt;
+
+&lt;!--Racine du document&gt; qui est d&eacute;coup&eacute;e en ann&eacute;es --&gt;
+&lt;!ELEMENT data ( periode+ )&gt;
+
+&lt;!-- Une p&eacute;riode contient des d&eacute;lits et des accidents --&gt;
+&lt;!ELEMENT periode ( delits, accidents )&gt;
+&lt;!-- @attr annee qui pr&eacute;cise de quelle ann&eacute;e il s'agit --&gt;
+&lt;!ATTLIST periode annee NMTOKEN #REQUIRED&gt;
+
+&lt;!-- Les &lt;delits&gt; sont compos&eacute;s de plusieurs d&eacute;lits --&gt;
+&lt;!ELEMENT delits ( delit+ )&gt;
+
+&lt;!-- Pour un &lt;delit&gt;, on a le nombre de ce d&eacute;lit par mois --&gt;
+&lt;!ELEMENT delit ( mois ) &gt;
+&lt;!-- @attr code se r&eacute;f&egrave;re &agrave; un type de d&eacute;lit --&gt;
+&lt;!ATTLIST delit code ( 2 | 27 | 35 | 36 | 57 | 82 ) #REQUIRED&gt;
+
+&lt;!-- Les mois de l'ann&eacute;e --&gt;
+&lt;!ELEMENT mois ( dec, nov, oct, sept, aout, juil, juin, mai, avril, mars, fev, janv )&gt;
+
+&lt;!-- D&eacute;cembre --&gt;
+&lt;!ELEMENT dec ( #PCDATA )&gt;
+
+&lt;!-- Novembre --&gt;
+&lt;!ELEMENT nov ( #PCDATA )&gt;
+
+&lt;!-- Octobre --&gt;
+&lt;!ELEMENT oct ( #PCDATA )&gt;
+
+&lt;!-- Septembre --&gt;
+&lt;!ELEMENT sept ( #PCDATA )&gt;
+
+&lt;!-- Ao&ucirc;t --&gt;
+&lt;!ELEMENT aout ( #PCDATA )&gt;
+
+&lt;!-- Juillet --&gt;
+&lt;!ELEMENT juil ( #PCDATA )&gt;
+
+&lt;!-- Juin --&gt;
+&lt;!ELEMENT juin ( #PCDATA )&gt;
+
+&lt;!-- Mai --&gt;
+&lt;!ELEMENT mai ( #PCDATA )&gt;
+
+&lt;!-- Avril --&gt;
+&lt;!ELEMENT avril ( #PCDATA )&gt;
+
+&lt;!-- Mars --&gt;
+&lt;!ELEMENT mars ( #PCDATA )&gt;
+
+&lt;!-- F&eacute;vrier --&gt;
+&lt;!ELEMENT fev ( #PCDATA )&gt;
+
+&lt;!-- Janvier --&gt;
+&lt;!ELEMENT janv ( #PCDATA )&gt;
+
+&lt;!-- Les accidents de la route --&gt;
+&lt;!ELEMENT accidents ( accident+ )&gt;
+
+&lt;!-- Un accident est compos&eacute; des informations suivantes --&gt;
+&lt;!ELEMENT accident ( date, heure, lumiere, conditionsAtmosferiques, colision, localisation, lieux, vehicules, usagers )&gt;
+&lt;!-- @attr id qui r&eacute;f&egrave;re &agrave; un num&eacute;ro unique d'accident --&gt;
+&lt;!ATTLIST accident id NMTOKEN #REQUIRED&gt;
+
+&lt;!-- La date de l'accident --&gt;
+&lt;!ELEMENT date ( #PCDATA )&gt;
+
+&lt;!-- L'heure de l'accident --&gt;
+&lt;!ELEMENT heure ( #PCDATA )&gt;
+
+&lt;!-- S'il faisait jour ou nuit --&gt;
+&lt;!ELEMENT lumiere ( #PCDATA )&gt;
+
+&lt;!-- Les conditions m&eacute;t&eacute;os au moment de l'accident --&gt;
+&lt;!ELEMENT conditionsAtmosferiques ( #PCDATA )&gt;
+
+&lt;!-- Le type de collision --&gt;
+&lt;!ELEMENT colision ( #PCDATA )&gt;
+
+&lt;!-- La localisation exacte de l'accident --&gt;
+&lt;!ELEMENT localisation ( adresse, latitude, longitude )&gt;
+
+&lt;!-- Son adresse --&gt;
+&lt;!ELEMENT adresse ( #PCDATA )&gt;
+
+&lt;!-- Sa latitude --&gt;
+&lt;!ELEMENT latitude ( #PCDATA )&gt;
+
+&lt;!-- Sa longitude --&gt;
+&lt;!ELEMENT longitude ( #PCDATA )&gt;
+
+&lt;!-- Les lieux de l'accident --&gt;
+&lt;!ELEMENT lieux ( categorie, surface )&gt;
+
+&lt;!-- Quel type de route --&gt;
+&lt;!ELEMENT categorie ( #PCDATA )&gt;
+
+&lt;!-- L'&eacute;tat de la route --&gt;
+&lt;!ELEMENT surface ( #PCDATA )&gt;
+
+&lt;!-- Les v&eacute;hicules impliqu&eacute;s dans l'accident --&gt;
+&lt;!ELEMENT vehicules ( vehicule+ )&gt;
+
+&lt;!-- Le &quot;comportement&quot; du v&eacute;hicule --&gt;
+&lt;!ELEMENT vehicule ( sens, catv, obstacleFixe, obstacleMobile, choc, manoeuvre )&gt;
+
+&lt;!-- Quel sens de la route --&gt;
+&lt;!ELEMENT sens ( #PCDATA )&gt;
+
+&lt;!-- La cat&eacute;gorie du v&eacute;hicule --&gt;
+&lt;!ELEMENT catv ( #PCDATA )&gt;
+
+&lt;!-- Si l'obstacle heurt&eacute; &eacute;tait fixe --&gt;
+&lt;!ELEMENT obstacleFixe ( #PCDATA )&gt;
+
+&lt;!-- Si l'obstacle heurt&eacute; &eacute;tait mobile --&gt;
+&lt;!ELEMENT obstacleMobile ( #PCDATA )&gt;
+
+&lt;!-- L'endroit du choc sur le v&eacute;hicule --&gt;
+&lt;!ELEMENT choc ( #PCDATA )&gt;
+
+&lt;!-- Type de manoeuvre effectu&eacute; au moment de l'accident --&gt;
+&lt;!ELEMENT manoeuvre ( #PCDATA )&gt;
+
+&lt;!-- Les usagers --&gt;
+&lt;!ELEMENT usagers ( usager+ )&gt;
+
+&lt;!-- Les usagers victimes de l'accident --&gt;
+&lt;!ELEMENT usager ( catUsager, gravite, sexe, securite, anNaissanceUsager )&gt;
+
+&lt;!-- Sa cat&eacute;gorie --&gt;
+&lt;!ELEMENT catUsager ( #PCDATA )&gt;
+
+&lt;!-- La gravit&eacute; de l'&eacute;tat de l'usager --&gt;
+&lt;!ELEMENT gravite ( #PCDATA )&gt;
+
+&lt;!-- Le sexe --&gt;
+&lt;!ELEMENT sexe ( #PCDATA )&gt;
+
+&lt;!-- Les &eacute;l&eacute;ments de s&eacute;curit&eacute; --&gt;
+&lt;!ELEMENT securite ( existence | utilistion )* &gt;
+
+&lt;!-- Si le dispositif &eacute;tait pr&eacute;sent --&gt;
+&lt;!ELEMENT existence ( #PCDATA )&gt;
+
+&lt;!-- Si le dispositif &eacute;tait utilis&eacute; --&gt;
+&lt;!ELEMENT utilistion ( #PCDATA )&gt;
+
+&lt;!-- L'ann&eacute;e de naissance de l'usager --&gt;
+&lt;!ELEMENT anNaissanceUsager ( #PCDATA )&gt;
+
+
+		</pre>
+		<a class="ui teal button" href="ALL_DPT.dtd" download>Le DTD peut être téléchargé ici.</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>XML</title>
+	<link rel="stylesheet" type="text/css" href="semantic.min.css" />
+	<link rel="stylesheet" type="text/css" href="my_css.css" />
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+	<div class="leaderboard" data-text="Leaderboard">
+		<h1>XML</h1>
+		<h4>Genevieve Bienvenue  &amp;  Alexandre Cavalcante  &amp;  Virginie Poadey</h4>
+	</div>
+	<div class="ui raised very padded text container segment">
+		<h2 class="ui header">RelaxNG</h2>
+		<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+
+&lt;!-- ALL_DPT.rng ==  pour les fichiers dpt_(13|19).xml 
+     GENEVIEVE BIENVENUE, ALEXANDRE CAVALCANTE, VIRGINIE POADEY
+     --&gt;
+
+&lt;!--Racine du document&gt; qui est d&eacute;coup&eacute;e en ann&eacute;es --&gt;
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0" 
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"&gt;
+  
+  &lt;start&gt;
+    &lt;choice&gt;
+      &lt;ref name="data"/&gt;
+    &lt;/choice&gt;
+  &lt;/start&gt;
+  
+  &lt;define name="data"&gt;
+    &lt;element name="data"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="periode"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Une p&eacute;riode contient des d&eacute;lits et des accidents --&gt;
+  &lt;define name="periode"&gt;
+    &lt;element name="periode"&gt;
+      &lt;ref name="attlist.periode"/&gt;
+      &lt;ref name="delits"/&gt;
+      &lt;ref name="accidents"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- @attr annee qui pr&eacute;cise de quelle ann&eacute;e il s'agit --&gt;
+  &lt;define name="attlist.periode" combine="interleave"&gt;
+    &lt;attribute name="annee"&gt;
+      &lt;data type="NMTOKEN"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Les &lt;delits&gt; sont compos&eacute;s de plusieurs d&eacute;lits --&gt;
+  &lt;define name="delits"&gt;
+    &lt;element name="delits"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="delit"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Pour un &lt;delit&gt;, on a le nombre de ce d&eacute;lit par mois --&gt;
+  &lt;define name="delit"&gt;
+    &lt;element name="delit"&gt;
+      &lt;ref name="attlist.delit"/&gt;
+      &lt;ref name="mois"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- @attr code se r&eacute;f&egrave;re &agrave; un type de d&eacute;lit --&gt;
+  &lt;define name="attlist.delit" combine="interleave"&gt;
+    &lt;attribute name="code"&gt;
+      &lt;choice&gt;
+        &lt;value&gt;2&lt;/value&gt;
+        &lt;value&gt;27&lt;/value&gt;
+        &lt;value&gt;35&lt;/value&gt;
+        &lt;value&gt;36&lt;/value&gt;
+        &lt;value&gt;57&lt;/value&gt;
+        &lt;value&gt;82&lt;/value&gt;
+      &lt;/choice&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt; 
+
+  &lt;!-- Les mois de l'ann&eacute;e --&gt;
+  &lt;define name="mois"&gt;
+    &lt;element name="mois"&gt;
+      &lt;ref name="dec"/&gt;
+      &lt;ref name="nov"/&gt;
+      &lt;ref name="oct"/&gt;
+      &lt;ref name="sept"/&gt;
+      &lt;ref name="aout"/&gt;
+      &lt;ref name="juil"/&gt;
+      &lt;ref name="juin"/&gt;
+      &lt;ref name="mai"/&gt;
+      &lt;ref name="avril"/&gt;
+      &lt;ref name="mars"/&gt;
+      &lt;ref name="fev"/&gt;
+      &lt;ref name="janv"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Janvier --&gt;
+  &lt;define name="janv"&gt;
+    &lt;element name="janv"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- F&eacute;vrier --&gt;
+  &lt;define name="fev"&gt;
+    &lt;element name="fev"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Mars --&gt;
+  &lt;define name="mars"&gt;
+    &lt;element name="mars"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Avril --&gt;
+  &lt;define name="avril"&gt;
+    &lt;element name="avril"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Mai --&gt;
+  &lt;define name="mai"&gt;
+    &lt;element name="mai"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;  
+  
+  &lt;!-- Juin --&gt;
+  &lt;define name="juin"&gt;
+    &lt;element name="juin"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+
+  &lt;!-- Juillet --&gt;
+  &lt;define name="juil"&gt;
+    &lt;element name="juil"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Ao&ucirc;t --&gt;
+  &lt;define name="aout"&gt;
+    &lt;element name="aout"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt; 
+  
+  &lt;!-- Septembre --&gt;
+  &lt;define name="sept"&gt;
+    &lt;element name="sept"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Octobre --&gt;
+  &lt;define name="oct"&gt;
+    &lt;element name="oct"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Novembre --&gt;
+  &lt;define name="nov"&gt;
+    &lt;element name="nov"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- D&eacute;cembre --&gt;
+  &lt;define name="dec"&gt;
+    &lt;element name="dec"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt; 
+  
+  &lt;!-- Les accidents de la route --&gt; 
+  &lt;define name="accidents"&gt;
+    &lt;element name="accidents"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="accident"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Un accident est compos&eacute; des informations suivantes --&gt;
+  &lt;define name="accident"&gt;
+    &lt;element name="accident"&gt;
+      &lt;ref name="attlist.accident"/&gt;
+      &lt;ref name="date"/&gt;
+      &lt;ref name="heure"/&gt;
+      &lt;ref name="lumiere"/&gt;
+      &lt;ref name="conditionsAtmosferiques"/&gt;
+      &lt;ref name="colision"/&gt;
+      &lt;ref name="localisation"/&gt;
+      &lt;ref name="lieux"/&gt;
+      &lt;ref name="vehicules"/&gt;
+      &lt;ref name="usagers"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- @attr id qui r&eacute;f&egrave;re &agrave; un num&eacute;ro unique d'accident --&gt;
+  &lt;define name="attlist.accident" combine="interleave"&gt;
+    &lt;attribute name="id"&gt;
+      &lt;data type="NMTOKEN"/&gt;
+    &lt;/attribute&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- La date de l'accident --&gt;
+  &lt;define name="date"&gt;
+    &lt;element name="date"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- L'heure de l'accident --&gt;
+  &lt;define name="heure"&gt;
+    &lt;element name="heure"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- S'il faisait jour ou nuit --&gt;
+  &lt;define name="lumiere"&gt;
+    &lt;element name="lumiere"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt; 
+  
+  &lt;!-- Les conditions m&eacute;t&eacute;os au moment de l'accident --&gt;
+  &lt;define name="conditionsAtmosferiques"&gt;
+    &lt;element name="conditionsAtmosferiques"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Le type de collision --&gt;
+  &lt;define name="colision"&gt;
+    &lt;element name="colision"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- La localisation exacte de l'accident --&gt;
+  &lt;define name="localisation"&gt;
+    &lt;element name="localisation"&gt;
+      &lt;ref name="adresse"/&gt;
+      &lt;ref name="latitude"/&gt;
+      &lt;ref name="longitude"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Son adresse --&gt;
+  &lt;define name="adresse"&gt;
+    &lt;element name="adresse"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Sa latitude --&gt;
+  &lt;define name="latitude"&gt;
+    &lt;element name="latitude"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Sa longitude --&gt;
+  &lt;define name="longitude"&gt;
+    &lt;element name="longitude"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Les lieux de l'accident --&gt;
+  &lt;define name="lieux"&gt;
+    &lt;element name="lieux"&gt;
+      &lt;ref name="categorie"/&gt;
+      &lt;ref name="surface"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Quel type de route --&gt;
+  &lt;define name="categorie"&gt;
+    &lt;element name="categorie"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- L'&eacute;tat de la route --&gt;
+  &lt;define name="surface"&gt;
+    &lt;element name="surface"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Les v&eacute;hicules impliqu&eacute;s dans l'accident --&gt;
+  &lt;define name="vehicules"&gt;
+    &lt;element name="vehicules"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="vehicule"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Le &quot;comportement&quot; du v&eacute;hicule --&gt;
+  &lt;define name="vehicule"&gt;
+    &lt;element name="vehicule"&gt;
+      &lt;ref name="sens"/&gt;
+      &lt;ref name="catv"/&gt;
+      &lt;ref name="obstacleFixe"/&gt;
+      &lt;ref name="obstacleMobile"/&gt;
+      &lt;ref name="choc"/&gt;
+      &lt;ref name="manoeuvre"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Quel sens de la route --&gt;
+  &lt;define name="sens"&gt;
+    &lt;element name="sens"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- La cat&eacute;gorie du v&eacute;hicule --&gt;  
+  &lt;define name="catv"&gt;
+    &lt;element name="catv"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Si l'obstacle heurt&eacute; &eacute;tait fixe --&gt;
+  &lt;define name="obstacleFixe"&gt;
+    &lt;element name="obstacleFixe"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+    
+  &lt;!-- Si l'obstacle heurt&eacute; &eacute;tait mobile --&gt;
+  &lt;define name="obstacleMobile"&gt;
+    &lt;element name="obstacleMobile"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- L'endroit du choc sur le v&eacute;hicule --&gt;  
+  &lt;define name="choc"&gt;
+    &lt;element name="choc"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Type de manoeuvre effectu&eacute; au moment de l'accident --&gt;
+  &lt;define name="manoeuvre"&gt;
+    &lt;element name="manoeuvre"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Les usagers --&gt;
+  &lt;define name="usagers"&gt;
+    &lt;element name="usagers"&gt;
+      &lt;oneOrMore&gt;
+        &lt;ref name="usager"/&gt;
+      &lt;/oneOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+ 
+  &lt;!-- Les usagers victimes de l'accident --&gt;
+  &lt;define name="usager"&gt;
+    &lt;element name="usager"&gt;
+      &lt;ref name="catUsager"/&gt;
+      &lt;ref name="gravite"/&gt;
+      &lt;ref name="sexe"/&gt;
+      &lt;ref name="securite"/&gt;
+      &lt;ref name="anNaissanceUsager"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Sa cat&eacute;gorie --&gt;
+  &lt;define name="catUsager"&gt;
+    &lt;element name="catUsager"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- La gravit&eacute; de l'&eacute;tat de l'usager --&gt;
+  &lt;define name="gravite"&gt;
+    &lt;element name="gravite"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Le sexe --&gt;
+  &lt;define name="sexe"&gt;
+    &lt;element name="sexe"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Les &eacute;l&eacute;ments de s&eacute;curit&eacute; --&gt;
+  &lt;define name="securite"&gt;
+    &lt;element name="securite"&gt;
+      &lt;zeroOrMore&gt;
+        &lt;choice&gt;
+          &lt;ref name="existence"/&gt;
+          &lt;ref name="utilistion"/&gt;
+        &lt;/choice&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Si le dispositif &eacute;tait pr&eacute;sent --&gt;
+  &lt;define name="existence"&gt;
+    &lt;element name="existence"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- Si le dispositif &eacute;tait utilis&eacute; --&gt;
+  &lt;define name="utilistion"&gt;
+    &lt;element name="utilistion"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  
+  &lt;!-- L'ann&eacute;e de naissance de l'usager --&gt;
+  &lt;define name="anNaissanceUsager"&gt;
+    &lt;element name="anNaissanceUsager"&gt;
+      &lt;text/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;  
+&lt;/grammar&gt;
+
+		</pre>
+		<a class="ui teal button" href="ALL_DPT.rng" download>Le RelaxNG peut être téléchargé ici.</a>
+	</div>
+</body>
+
+</html>

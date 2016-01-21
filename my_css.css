@@ -50,6 +50,15 @@ p {
 	color: #8a8888;
 }
 
+pre {
+	color: #8a8888;
+	font-size: 0.9em;
+	background: rgba(0,0,0,0.1);
+	border: 1px solid rgba(0,0,0,0.2);
+    white-space: pre-wrap;
+	padding: 5px;
+}
+
 .ui.items > .item .meta {
 	color: #5c5a5b;
 }

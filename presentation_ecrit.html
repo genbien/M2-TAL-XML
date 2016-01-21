@@ -15,12 +15,38 @@
 		<h4>Genevieve Bienvenue  &amp;  Alexandre Cavalcante  &amp;  Virginie Poadey</h4>
 	</div>
 	<div class="ui raised very padded text container segment">
-		<h2 class="ui header">Presentation Page 1</h2>
+		<h2 class="ui header">Présentation Écrite</h2>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis ante vitae ex efficitur semper. Nam interdum malesuada dolor vel sodales. Vivamus sed leo quis magna luctus faucibus. Donec aliquam, turpis non blandit bibendum, enim dui varius lectus, eu viverra ante turpis sed velit. Pellentesque vel auctor turpis, non ultrices lectus. Morbi feugiat massa erat, at sodales mauris lobortis sit amet. Suspendisse potenti. In ultricies sapien dictum, mattis ante et, ultrices velit. Aliquam eu egestas sem. Mauris malesuada, nisl a aliquet dapibus, sem lectus molestie diam, in ultricies sem elit ut augue
+			<b>Pourquoi ce sujet, cette thématique ?</b><br/>
+			Ce n'est pas un thème très joyeux mais on a vu un potentiel d'exploitation des données en voyant justement le lien avec le numéro d'accident dans chacun des fichiers d'accidents. Puis finalement, on a voulu voir si les crimes commis sur les mêmes années avaient des liens avec les accidents qu'on a relevé. On a décidé de garder les années de 2010 à 2014 inclus.<br/>
+			Le tout a donc été de trouver un bon moyen d'utiliser ces données pour les croiser comme il faut.
 		</p>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis ante vitae ex efficitur semper. Nam interdum malesuada dolor vel sodales. Vivamus sed leo quis magna luctus faucibus. Donec aliquam, turpis non blandit bibendum, enim dui varius lectus, eu viverra ante turpis sed velit. Pellentesque vel auctor turpis, non ultrices lectus. Morbi feugiat massa erat, at sodales mauris lobortis sit amet. Suspendisse potenti. In ultricies sapien dictum, mattis ante et, ultrices velit. Aliquam eu egestas sem. Mauris malesuada, nisl a aliquet dapibus, sem lectus molestie diam, in ultricies sem elit ut augue
+			Pour le XML pivot final, on a finalement garder deux départements différents (le 13 et le 19) mais qui ont la même structure (donc la même DTD et le même RelaxNG). On a choisi ces deux-là car on en voulait un avec de grandes villes (Marseille) et un autre où il n'y a pas de ville de cette envergure. Puis pour éviter d'avoir de trop gros fichiers bien trop surchargés, on a fait un choix de balises qu'on allait garder qui pourraient potentiellement nous servir pour la suite (on atteignait des millions de lignes en concaténant tous les fichiers juste pour les accidents). On a donc fait le choix de classer le tout par année, car c'était le point commun entre les deux fichiers qui nous a paru pertinent d'exploiter. Toute cette phase a été très longue car on a travaillé sur un très grand jeu de données.
+			Suite à cela, on a créé les deux grammaires (DTD et RelaxNG). Ce n'était pas la phase la plus compliquée du projet.
+		</p>
+		<p>
+			En revanche, le XSLT n'a pas été chose facile. Premièrement, on a du réfléchir à ce qu'on pouvait effectuer comme requêtes qui intéressantes. On a essayé faire ressortir les accidents et les délits ensemble (histoire que le croisement des données ait une utilité). Une fois qu'on a décidé de ce qu'on voulait modéliser, il a fallu écrire le programme. Certaines requêtes Xpaths étaient assez longues et pas si évidentes à faire. De plus, il fallait réussir à inclure cela dans le XSLT, pas évident non plus quand on n'a pas l'habitude de sa syntaxe. Le fait de devoir trouver des combines pour incrémenter des variables est un peu pénible quand d'ordinaire, on fait ++ ou += 1.
+		</p>
+		<p>
+			<b>Description des sorties produites et des outils utilisés</b><br/>
+			Une sortie html pour affichage sur le site
+			Une sortie csv pour afficher les données dans un format qui conforme aux format desiré par Google Maps.
+
+		</p>
+		<p>
+			<b>Analyse des résultats</b><br/>
+			(voir avec la sortie csv)
+		</p>
+		<p>
+			<b>Problématique rencontrées lors de la modélisation XSLT</b><br/>
+
+			Trouver de bonnes requêtes à exploiter.
+		</p>
+		<p>
+			<b>Difficultés éventuelles lors de l'écriture du programme XSLT</b><br/>
+
+			La syntaxe n'est pas évidente. On a eu du mal à incrémenter des variables pour compter les hommes/femmes dans la totalité du fichier, sans qu'il y ait de redondance
 		</p>
 	</div>
 </body>
