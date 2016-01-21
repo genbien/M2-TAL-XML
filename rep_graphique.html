@@ -20,19 +20,19 @@
 			Pour créer ces cartes, on a ajouté dans notre fichier XSLT un export au format CSV.
 		</p>
 		<p>
-			Le format CSV (Comma Separated Values) est un format courrant d'echange de données.
-			C'est un format très simple ou chaque ligne correspond à un object, dont les propriétés sont réparés en colunes séparés par des virgules. Ce qui le rend très facile à lire et à écrire dans un programe.
+			Le format CSV (Comma Separated Values) est un format courant d'échange de données.
+			C'est un format très simple ou chaque ligne correspond à un object, dont les propriétés sont réparties en colonnes séparées par des virgules, ce qui le rend très facile à lire et à écrire dans un programme.
 
-			Cet export prend pour chaque accident, l'adresse, la latitude et la longitude de chaque accident, et les écrit dans un fichier CSV. Le format CSV est nativement supporté par Google Maps et était nécessaire pour y importer nos données.
+			Cet export prend pour chaque accident, son adresse, sa latitude et sa longitude et les écrit dans un fichier CSV. Le format CSV est nativement supporté par Google Maps et était nécessaire pour y importer nos données.
 		</p>
 		<p>
-			Google Maps est une service de Google qui permet aux utilisateurs de faire leur propres cartes avec leur propres données. On peut voir les résultats de la transformation XSLT dans les deux fenêtres ci-dessus.
+			Google Maps est un service de Google qui permet aux utilisateurs de faire leurs propres cartes avec leur propres données. On peut voir les résultats de la transformation XSLT dans les deux fenêtres ci-dessous.
 		</p>
 		<iframe src="https://www.google.com/maps/d/embed?mid=z7sr4JCS6u2k.kteuLPU_pUrU" width="100%" height="480"></iframe>
 		<p>
-			Il est possible de zoomer sur la carte à l'aide des controles en bas à gauche de la carte.<br/>
-			On peut ainsi voir plus distinctivement la répartition des accident.<br/>
-			Ol est également possible de cliquer sur le marqueur (petite voiture) pour lire les informations d'adresse extraites de nos données.
+			Il est possible de zoomer sur la carte à l'aide des contrôles en bas à gauche de la carte.<br/>
+			On peut ainsi voir plus distinctivement la répartition des accidents.<br/>
+			Il est également possible de cliquer sur le marqueur (petite voiture) pour lire les informations d'adresse extraites de nos données.
 		</p>
 		<iframe src="https://www.google.com/maps/d/embed?mid=z7sr4JCS6u2k.km_fD3w7wsqA" width="100%" height="480"></iframe>
 		<p>
@@ -40,18 +40,18 @@
 			<ul>
 				<li>
 				<b>Les accidents se produisent majoritairement dans les grandes villes.</b><br/>
-				Ceci peut être expliqué par le nombre des gens qui traversent ces routes, plus il y à de passage, plus il est probable de voir un accident.
+				Ceci peut être expliqué par le nombre de gens qui traversent ces routes, plus il y a de passage, plus il est probable de voir un accident.
 				</li>
 
 				<li>
-				<b>Les accidents se produisent surtout sur les très grand axes autour des villes, mais aussi sur les très petits axes dans les zones rurales.</b><br/>
-				On peut postuler que, dans le premier cas, il s'agit malgrès les aménagements souvent meilleurs, de la fatigue des usagers dus aux long trajets.
-				Et dans un deuxieme cas, sur des petites routes de campagnes, de la mauvaise condition des routes et le manque d'aménagement.
+				<b>Les accidents se produisent surtout sur les très grands axes autour des villes, mais aussi sur les très petits axes dans les zones rurales.</b><br/>
+				On peut postuler que, dans le premier cas, il s'agit, malgré l'installation de nouveaux aménagements, de la fatigue des usagers dus aux longs trajets.
+				Et dans le deuxieme cas, sur de petites routes de campagne, le mauvais état des routes et le manque d'aménagement peut être une explication. 
 				</li>
 
 				<li>
-				<b>Il y à en revanche relativement peu d'accidents sur les axes de moyenne importance.</b><br/>
-				On peut postuler que du fait qu'il sont souvent empruntés pour des trajets locaux et relativement bien aménagés, la sécurité y est optimale.
+				<b>Il y a en revanche relativement peu d'accidents sur les axes de moyenne importance.</b><br/>
+				On peut postuler que comme ils sont souvent empruntés pour des trajets locaux et qu'ils sont relativement bien aménagés, la sécurité y est optimale.
 				</li>
 
 			</ul>
