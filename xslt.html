@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>XML</title>
+	<link rel="stylesheet" type="text/css" href="semantic.min.css" />
+	<link rel="stylesheet" type="text/css" href="my_css.css" />
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+	<div class="leaderboard" data-text="Leaderboard">
+		<h1>XML</h1>
+		<h4>Genevieve Bienvenue  &amp;  Alexandre Cavalcante  &amp;  Virginie Poadey</h4>
+	</div>
+	<div class="ui raised very padded text container segment">
+		<h2 class="ui header">XSLT</h2>
+		<pre>
+
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+    &lt;xsl:output name="csv-out" method="text" encoding="UTF-8" media-type="text/csv"/&gt;
+    
+    &lt;xsl:output indent="yes" method="html" encoding="UTF-8"
+        doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+        doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/&gt;
+    
+    &lt;xsl:output name="css-out" indent="no" method="text" encoding="UTF-8" media-type="text/css"/&gt;
+    
+    &lt;xsl:template match="/"&gt;
+        &lt;xsl:message&gt;D&eacute;but de la transformation&lt;/xsl:message&gt;
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;link rel="stylesheet" type="text/css" href="semantic.min.css" /&gt;
+                &lt;link rel="stylesheet" href="style.css" media="all" type="text/css"/&gt;
+                &lt;link rel="shortcut icon" href="images/favicon.ico" /&gt;
+                &lt;link href="http://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css"/&gt;
+                &lt;!-- cr&eacute;er le lien vers le css. html est cr&eacute;&eacute; &agrave; c&ocirc;t&eacute; du fichier ex&eacute;cutable. css aussi --&gt;
+                &lt;title&gt;XML&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;div class="leaderboard" data-text="Leaderboard"&gt;
+                    &lt;h1&gt;XML&lt;/h1&gt;
+                    &lt;h4&gt;Genevieve Bienvenue  &amp;  Alexandre Cavalcante  &amp;  Virginie Poadey&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class="ui raised very padded text container segment"&gt;
+                &lt;/div&gt;
+                &lt;!--&lt;xsl:apply-templates/&gt;--&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+        
+        &lt;xsl:message&gt;&Eacute;criture de la CSS&lt;/xsl:message&gt;
+        &lt;xsl:result-document href="style.css" format="css-out"&gt;
+            &lt;!--se trouvera pas ds sortie principale. href : enregistrer. chemin relatif/absolu --&gt;
+            &lt;!-- format fait r&eacute;f&eacute;rence &agrave; name de xsl:output --&gt;          
+            &lt;xsl:text&gt;html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.leaderboard {
+    width: 100%;
+    min-height: 20%;
+    background-color: #232323;
+}
+
+.leaderboard h1 {
+    padding-top: 40px;
+    font-family: Cinzel;
+    color: #00b5ad;
+    text-align: center;
+    font-size: 86px;
+}
+
+.leaderboard h4 {
+    font-family: Cinzel;
+    color: #00b5ad;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.item .content {
+    text-align: justify;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+
+body {
+    background: #333 url(images/footer_lodyas.png) center center;
+    background-attachment: fixed;
+}
+
+.ui.items &gt; .item &gt; .content &gt; span.header {
+    font-family: Cinzel;
+    color: #00b5ad;
+}
+
+p {
+    color: #8a8888;
+}
+
+.ui.items &gt; .item .meta {
+    color: #5c5a5b;
+}
+
+.ui.divided.items&gt;.item {
+    border-top: 2px solid #00b5ad;
+}
+
+.ui.items&gt;.item a {
+    color: #00b5ad;
+}
+
+.ui.segment {
+    background: rgba(132, 132, 132, 0.3);
+}
+
+.ui.segment h2 {
+    text-align: center;
+    font-family: Cinzel;
+    color: #00b5ad;
+}
+
+.ui.segment p {
+    text-align: justify;
+}
+            &lt;/xsl:text&gt;
+        &lt;/xsl:result-document&gt;
+        
+        &lt;xsl:message&gt;&Eacute;criture de la CSV&lt;/xsl:message&gt;
+        &lt;xsl:result-document href="map.csv" format="csv-out"&gt;
+            &lt;xsl:apply-templates select="/data/periode/accidents/accident/localisation" mode="out_csv"/&gt;
+        &lt;/xsl:result-document&gt;
+    &lt;/xsl:template&gt;
+    
+    &lt;!-- affiche latitude,longitude pour une sortie csv qui marche pour google maps --&gt;
+    &lt;xsl:template match="localisation" mode="out_csv"&gt;
+        &lt;xsl:if test="number(latitude) &gt; 0"&gt;
+            &lt;xsl:value-of select="adresse"/&gt;
+            &lt;xsl:text&gt;,&lt;/xsl:text&gt;
+            &lt;xsl:value-of select="replace(latitude, '(\d\d)(\d+)', '$1.$2')"/&gt;
+            &lt;xsl:text&gt;,&lt;/xsl:text&gt;
+            &lt;xsl:value-of select="replace(longitude, '(\d)(\d+)', '$1.$2')"/&gt;
+            &lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+        &lt;/xsl:if&gt;
+    &lt;/xsl:template&gt;
+    
+&lt;/xsl:stylesheet&gt;
+
+		</pre>
+		<a class="ui teal button" href="dpt.xsl" download>Le XSLT peut être téléchargé ici.</a>
+	</div>
+</body>
+
+</html>
