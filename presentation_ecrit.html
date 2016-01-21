@@ -25,22 +25,22 @@
 			Pour le XML pivot final, on a finalement garder deux départements différents (le 13 et le 19) mais qui ont la même structure (donc la même DTD et le même RelaxNG). On a choisi ces deux-là car on en voulait un avec de grandes villes (Marseille) et un autre où il n'y a pas de ville de cette envergure. Puis pour éviter d'avoir de trop gros fichiers bien trop surchargés, on a fait un choix de balises qu'on allait garder qui pourraient potentiellement nous servir pour la suite (on atteignait des millions de lignes en concaténant tous les fichiers juste pour les accidents). On a donc fait le choix de classer le tout par année, car c'était le point commun entre les deux fichiers qui nous a paru pertinent d'exploiter. Toute cette phase a été très longue car on a travaillé sur un très grand jeu de données.
 			Suite à cela, on a créé les deux grammaires (DTD et RelaxNG). Ce n'était pas la phase la plus compliquée du projet.
 		</p>
+		
 		<p>
-			En revanche, le XSLT n'a pas été chose facile. Premièrement, on a du réfléchir à ce qu'on pouvait effectuer comme requêtes qui intéressantes. On a essayé faire ressortir les accidents et les délits ensemble (histoire que le croisement des données ait une utilité). Une fois qu'on a décidé de ce qu'on voulait modéliser, il a fallu écrire le programme. Certaines requêtes Xpaths étaient assez longues et pas si évidentes à faire. De plus, il fallait réussir à inclure cela dans le XSLT, pas évident non plus quand on n'a pas l'habitude de sa syntaxe. Le fait de devoir trouver des combines pour incrémenter des variables est un peu pénible quand d'ordinaire, on fait ++ ou += 1.
+			<b>Choix de jeux de données</b><br/>
+			Pour choisir les jeux de données que nous avons utilisés, nous avons pris en compte la quantité, la variété et l'organisation d'informations fournies. Nous avons établi ce critère de manière empirique. Nous espérions ainsi avoir plus de possibilités de construire des hypothèses et des croisements d'informations si la quantité de données était suffisamment large.
 		</p>
 		<p>
-			<b>Choix de jeu de données</b><br/>
-			Pour choisir les jeux de données que nous avons utilisés, nous avons pris en compte la quantité, la variété et l'organisation d'informations fournies. Nous avons établi ce critère de manière empirique. Nous espérions ainsi avoir plus de possibilité de construire des hypothèses et de croisement d'information si la quantité de données était suffisamment large.<br/>
-			Le jeu de données sur les accidents corporels en France dispose les caractéristiques établies à l'épate précédentes. Ce jeu de donnée contient les informations des accidents routiers en France métropolitaine et départements outre-mer. Les caractéristiques de l'accident tels que les conditions climatiques, les conditions de lumière, état de la voie sont décrits sur une ligne des fichiers caractéristique_2014.csv et lieux_2014.csv. Les informations des usagers et véhicules sont éparpillées en plusieurs lignes différentes des fichiers vehicules_2014.csv et usagers_2014.csv.<br/>
+			Le jeu de données sur les accidents corporels en France dispose de caractéristiques établies à l'étape précédente. Ce jeu de données contient les informations des accidents routiers en France métropolitaine et départements outre-mer. Les caractéristiques de l'accident telles que les conditions climatiques, les conditions de lumière, état de la voie sont décrits sur une ligne des fichiers caractéristique_2014.csv et lieux_2014.csv. Les informations des usagers et véhicules sont éparpillées en plusieurs lignes différentes sur les fichiers vehicules_2014.csv et usagers_2014.csv.<br/>
 			Toutes les données contiennent une colonne numéro d'accident (numAcc), ce qui rend possiblement la consolidation des quatre fichiers.<br/>
 			Dans son ensemble, les fichiers décrivent 59.854 accidents qui ont eu lieu dans l'année de 2014.
 		</p>
 		<p>
-			Le jeu de données sur les Faits Constatés respectent les même critères établis précédemment. Dans le fichier Tableaux_délits.xlsx nous avons les informations de quantité de crimes et de délits commis en France métropolitaine et outre-mer. Les informations sont divisées par départements et ordonnées par an (de janvier/1996 à novembre/2015). Pour notre travail, nous avons gardé la période de janvier/2010 à décembre/2014, qui est la période qui correspond au jeu de données des accidents.
+			Le jeu de données sur les Faits Constatés respectent les mêmes critères établis précédemment. Dans le fichier Tableaux_délits.xlsx nous avons les informations de quantité de crimes et de délits commis en France métropolitaine et outre-mer. Les informations sont divisées par départements et ordonnées par an (de janvier/1996 à novembre/2015). Pour notre travail, nous avons gardé la période de janvier/2010 à décembre/2014, qui est la période correspondant au jeu de données des accidents.
 		</p>
 		<p>
 			<b>Normalisation des fichiers des accidents de circulation</b><br/>
-			Pour les fichiers puissent être traités, nous avons dû réaliser une normalisation de données. Ce processus de traitement consiste à réaliser un « nettoyage » des données qui puissent rendre difficile ou impossible les traitements subséquents. Les principales étapes ont consisté à enlever les virgules de trop dans certains champs (virgules pour séparer les numéros des noms de rue dans les champs d'adresse. Ex. : 45, ave Michelet), normalisation de code qui n'avait pas de correspondants dans la charte de descriptions du jeu de données. Par exemple, pour la colonne categorie du fichier lieux, la charte d'utilisation nous indiquait les codes suivants :
+			Pour que les fichiers puissent être traités, nous avons dû réaliser une normalisation des données. Ce processus de traitement consiste à réaliser un « nettoyage » des données sans lequel les traitements subséquents auraient été difficiles ou impossibles. Les principales étapes ont consisté à enlever les virgules de trop dans certains champs (virgules pour séparer les numéros des noms de rue dans les champs d'adresse. Ex. : 45, ave Michelet), normalisation de code qui n'avait pas de correspondants dans la charte de descriptions du jeu de données. Par exemple, pour la colonne categorie du fichier lieux, la charte d'utilisation nous indiquait les codes suivants :
 		</p>
 		<ol>
 			<li>Autoroute</li>
@@ -52,28 +52,35 @@
 			<li>autre</li>
 		</ol>
 		<p>
-			<b>Normalisation des fichiers des fait constatés</b><br/>
-			Pour que les données de fait constatés soit utilisables nous avons procédé une série de normalisations en deux étapes.<br/>
-			Dans la première étape, nous avons éliminé les colonnes du fichier Excel que ne seraient pas utiles pour notre travail. Pour chaque département français, le fichier xsl contenait les informations de délits commis pendant la période de janvier/1996 jusqu'à novembre/2015. L'élimination de colonnes contenant les informations avant janvier/2010 et après décembre/2015 avait pour objectif la réduction de données à traiter lors de la création du fichier XML. Après avoir supprimé les colonnes excédantes, nous avons enregistré chaque ongle fichier XSL comme un fichier CSV. La consolidation de ces fichiers CSV en fichier XML a été réalisée par un script <a href="python_xml.zip" download>python</a> que nous avons développé.
+			<b>Normalisation des fichiers des faits constatés</b><br/>
+			Pour que les données de faits constatés soient utilisables, nous avons procédé à une série de normalisations en deux étapes.<br/>
+			Dans la première étape, nous avons éliminé les colonnes du fichier Excel que n'étaient pas utiles pour notre travail. Pour chaque département français, le fichier xsl contenait les informations de délits commis pendant la période de janvier/1996 jusqu'à novembre/2015. L'élimination de colonnes contenant les informations avant janvier/2010 et après décembre/2015 avait pour objectif la réduction de données à traiter lors de la création du fichier XML. Après avoir supprimé les colonnes excédantes, nous avons enregistré chaque onglet du fichier XSL comme un fichier CSV. La consolidation de ces fichiers CSV en fichier XML a été réalisée par un script <a href="python_xml.zip" download>python</a> que nous avons développé.
 		</p>
 		<p>
 			<b>Description des sorties produites et des outils utilisés</b><br/>
-			Une sortie html pour affichage sur le site
-			Une sortie csv pour afficher les données dans un format qui conforme aux format desiré par Google Maps.
+			Une petite sortie HTML pour afficher quelques requêtes sur le site.
+			Deux sorties CSV dont une pour afficher les données dans un format qui conforme au format desiré par Google Maps pour créer les cartes et une autre pour pouvoir créer des graphiques et voir les corrélations dans le croisement des données.
 
 		</p>
 		<p>
 			<b>Analyse des résultats</b><br/>
-			Nos résultats peuvent être regardé dans des different cartes et graphes. On les visuialize avec Google Maps et Excel. Les résultats peuvent être trouvé en cliquant le boutton ci-dessus :<br/>
-			<a class="ui tiny teal button" href="rep_graphique.html">Résultats</a>
+			Nos résultats peuvent être regardé dans differents cartes et graphes. On les visualise avec Google Maps et Excel. Les résultats peuvent être trouvés en cliquant le boutton ci-dessous :
 		</p>
+		<a class="ui tiny teal button" href="rep_graphique.html">Résultats</a>
+		<br/>
+		<br/>
 		<p>
-			<b>Problématique rencontrées lors de la modélisation XSLT</b><br/>
-			Trouver de bonnes requêtes à exploiter.
+			<b>Problématiques rencontrées lors de la modélisation XSLT</b><br/>
+			On a dû réfléchir à ce qu'on pouvait effectuer comme requêtes intéressantes. On a essayé faire ressortir les accidents et les délits ensemble (histoire que le croisement des données ait une utilité). Une fois qu'on a décidé de ce qu'on voulait modéliser, il a fallu écrire le programme. Certaines requêtes Xpaths étaient assez longues et pas si évidentes à faire. De plus, il fallait réussir à inclure cela dans le XSLT, pas évident non plus quand on n'a pas l'habitude de sa syntaxe. Le fait de devoir trouver des combines pour incrémenter des variables est un peu pénible quand d'ordinaire, on fait ++ ou += 1.
 		</p>
 		<p>
 			<b>Difficultés éventuelles lors de l'écriture du programme XSLT</b><br/>
-			La syntaxe n'est pas évidente. On a eu du mal à incrémenter des variables pour compter les hommes/femmes dans la totalité du fichier, sans qu'il y ait de redondance.
+			La syntaxe n'est pas évidente. On a eu du mal à incrémenter des variables pour compter les hommes/femmes dans la totalité du fichier, sans qu'il y ait de redondance (au début).<br/>
+			Puis on voulait ajouter d'autres informations dans notre fichier CSV de résultats. Le plus intéressant était de croiser les crimes (comme vols de voiture, usage de stupéfiants) avec les accidents pour voir si sur les graphiques, on aurait des corrélations entre les deux. Mais pour écrire toute cette requête dans le programme XSLT, on s'est arraché les cheveux un par un car on a essayé plusieurs méthodes différentes, sans parvenir à un résultat satisfaisant. En effet, pour compter le nombre d'accidents par mois sur une année (et ce, pour les cinq années) nous avons tellement essayé de techniques qu'on ne sait même pas finalement si c'est possible de faire ce qu'on voulait faire. En fait, on a trouvé une requête Xpath qui nous rendait bien un accident mais ce qu'on voulait, c'était les compter par mois et par année.</br>
+			C'est là que les complications ont commencé. En effet, nous avons essayé tant bien que mal de variabiliser le tout mais sans succès. Alors, nous avons créé une variable pour chaque mois dans un premier temps. Puis, comme nous ne voulions pas copier/coller cinq fois la même chose, nous voulions vraiment mettre l'année en tant que variable pour optimiser au maximum le code. Nous avons essayé avec un <b>for-each</b>, un <b>if</b>, un <b>template nommé</b>... Peut-être d'autres mais de toute façon, aucun n'a fonctionné. Après des heures et des heures de lutte, nous avons malheureusement fait ce que nous ne voulions pas faire au début mais qui fonctionne et donne des résultats. Ce n'est pas faute d'avoir essayé.
+		</p>
+		<p>
+			Heureusement, pour les données CSV qui nous ont servi pour la map Google, on a pas eu autant de mal sur le XSLT. C'est une des raisons pour laquelle on a fait deux fichiers de transformations différents. Une fois la map finie et la petite sortie HTML aussi, on n'avait plus qu'à se concentrer sur le reste. De plus, le fichier avec les crimes/accidents combinés mettait pas mal de temps au niveau de la transformation (surtout pour le 13), il était donc plus judicieux pour nous de les séparer en deux.
 		</p>
 	</div>
 </body>
