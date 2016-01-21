@@ -29,6 +29,34 @@
 			En revanche, le XSLT n'a pas été chose facile. Premièrement, on a du réfléchir à ce qu'on pouvait effectuer comme requêtes qui intéressantes. On a essayé faire ressortir les accidents et les délits ensemble (histoire que le croisement des données ait une utilité). Une fois qu'on a décidé de ce qu'on voulait modéliser, il a fallu écrire le programme. Certaines requêtes Xpaths étaient assez longues et pas si évidentes à faire. De plus, il fallait réussir à inclure cela dans le XSLT, pas évident non plus quand on n'a pas l'habitude de sa syntaxe. Le fait de devoir trouver des combines pour incrémenter des variables est un peu pénible quand d'ordinaire, on fait ++ ou += 1.
 		</p>
 		<p>
+			<b>Choix de jeu de données</b><br/>
+			Pour choisir les jeux de données que nous avons utilisés, nous avons pris en compte la quantité, la variété et l'organisation d'informations fournies. Nous avons établi ce critère de manière empirique. Nous espérions ainsi avoir plus de possibilité de construire des hypothèses et de croisement d'information si la quantité de données était suffisamment large.<br/>
+			Le jeu de données sur les accidents corporels en France dispose les caractéristiques établies à l'épate précédentes. Ce jeu de donnée contient les informations des accidents routiers en France métropolitaine et départements outre-mer. Les caractéristiques de l'accident tels que les conditions climatiques, les conditions de lumière, état de la voie sont décrits sur une ligne des fichiers caractéristique_2014.csv et lieux_2014.csv. Les informations des usagers et véhicules sont éparpillées en plusieurs lignes différentes des fichiers vehicules_2014.csv et usagers_2014.csv.<br/>
+			Toutes les données contiennent une colonne numéro d'accident (numAcc), ce qui rend possiblement la consolidation des quatre fichiers.<br/>
+			Dans son ensemble, les fichiers décrivent 59.854 accidents qui ont eu lieu dans l'année de 2014.
+		</p>
+		<p>
+			Le jeu de données sur les Faits Constatés respectent les même critères établis précédemment. Dans le fichier Tableaux_délits.xlsx nous avons les informations de quantité de crimes et de délits commis en France métropolitaine et outre-mer. Les informations sont divisées par départements et ordonnées par an (de janvier/1996 à novembre/2015). Pour notre travail, nous avons gardé la période de janvier/2010 à décembre/2014, qui est la période qui correspond au jeu de données des accidents.
+		</p>
+		<p>
+			<b>Normalisation des fichiers des accidents de circulation</b><br/>
+			Pour les fichiers puissent être traités, nous avons dû réaliser une normalisation de données. Ce processus de traitement consiste à réaliser un « nettoyage » des données qui puissent rendre difficile ou impossible les traitements subséquents. Les principales étapes ont consisté à enlever les virgules de trop dans certains champs (virgules pour séparer les numéros des noms de rue dans les champs d'adresse. Ex. : 45, ave Michelet), normalisation de code qui n'avait pas de correspondants dans la charte de descriptions du jeu de données. Par exemple, pour la colonne categorie du fichier lieux, la charte d'utilisation nous indiquait les codes suivants :
+		</p>
+		<ol>
+			<li>Autoroute</li>
+			<li>Route Nationale</li>
+			<li>Route Départementale</li>
+			<li>Voie Communale</li>
+			<li>Hors réseau public</li>
+			<li>Parc de stationnement ouvert à la circulation publique</li>
+			<li>autre</li>
+		</ol>
+		<p>
+			<b>Normalisation des fichiers des fait constatés</b><br/>
+			Pour que les données de fait constatés soit utilisables nous avons procédé une série de normalisations en deux étapes.<br/>
+			Dans la première étape, nous avons éliminé les colonnes du fichier Excel que ne seraient pas utiles pour notre travail. Pour chaque département français, le fichier xsl contenait les informations de délits commis pendant la période de janvier/1996 jusqu'à novembre/2015. L'élimination de colonnes contenant les informations avant janvier/2010 et après décembre/2015 avait pour objectif la réduction de données à traiter lors de la création du fichier XML. Après avoir supprimé les colonnes excédantes, nous avons enregistré chaque ongle fichier XSL comme un fichier CSV. La consolidation de ces fichiers CSV en fichier XML a été réalisée par un script python que nous avons développé.
+		</p>
+		<p>
 			<b>Description des sorties produites et des outils utilisés</b><br/>
 			Une sortie html pour affichage sur le site
 			Une sortie csv pour afficher les données dans un format qui conforme aux format desiré par Google Maps.
